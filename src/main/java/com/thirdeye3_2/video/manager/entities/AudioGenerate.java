@@ -50,7 +50,6 @@ public class AudioGenerate {
     @Column(name = "auto_delete", nullable = false)
     private Boolean autoDelete;
     
-    @Lob
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 }
