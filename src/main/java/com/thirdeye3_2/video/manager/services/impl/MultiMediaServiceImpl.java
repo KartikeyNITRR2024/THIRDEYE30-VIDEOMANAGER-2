@@ -106,7 +106,7 @@ public class MultiMediaServiceImpl implements MultiMediaService {
 	    multiMediaRepository.save(entity);
 
 	    String viewUrl = UriComponentsBuilder.fromHttpUrl(urlStarter)
-	            .pathSegment("vm", "multimedia", "view", entity.getKey().toString())
+	            .pathSegment("vm2", "multimedia", "view", entity.getKey().toString())
 	            .build()
 	            .toUriString();
 
@@ -169,7 +169,7 @@ public class MultiMediaServiceImpl implements MultiMediaService {
 	        MultiMedia saved = multiMediaRepository.save(entity);
 
 	        String viewUrl = UriComponentsBuilder.fromHttpUrl(urlStarter)
-	                .pathSegment("vm", "multimedia", "view", saved.getKey().toString())
+	                .pathSegment("vm2", "multimedia", "view", saved.getKey().toString())
 	                .build()
 	                .toUriString();
 	        
