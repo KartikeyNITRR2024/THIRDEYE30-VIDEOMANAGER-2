@@ -10,6 +10,7 @@ import com.thirdeye3_2.video.manager.dtos.StockDto;
 import com.thirdeye3_2.video.manager.dtos.StockGroupDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDetailsDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDto;
+import com.thirdeye3_2.video.manager.dtos.VideoSettingDto;
 import com.thirdeye3_2.video.manager.entities.AudioGenerate;
 import com.thirdeye3_2.video.manager.entities.CurrentVideo;
 import com.thirdeye3_2.video.manager.entities.News;
@@ -17,6 +18,7 @@ import com.thirdeye3_2.video.manager.entities.Stock;
 import com.thirdeye3_2.video.manager.entities.StockGroup;
 import com.thirdeye3_2.video.manager.entities.Video;
 import com.thirdeye3_2.video.manager.entities.VideoDetails;
+import com.thirdeye3_2.video.manager.entities.VideoSetting;
 
 public class Mapper {
 
@@ -201,6 +203,48 @@ public class Mapper {
                 .stockName(entity.getStockName())
                 .active(entity.getActive())
                 .groupId(entity.getGroup().getId())
+                .build();
+    }
+    
+    public static VideoSetting toEntity(VideoSettingDto dto) {
+        return VideoSetting.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .active(dto.getActive())
+                .fps(dto.getFps())
+                .height(dto.getHeight())
+                .width(dto.getWidth())
+                .introPresent(dto.getIntroPresent())
+                .introTime(dto.getIntroTime())
+                .mainVideoPresent(dto.getMainVideoPresent())
+                .mainVideoTime(dto.getMainVideoTime())
+                .outroPresent(dto.getOutroPresent())
+                .outroTime(dto.getOutroTime())
+                .sequence(dto.getSequence())
+                .soundPresent(dto.getSoundPresent())
+                .lastlyUsed(dto.getLastlyUsed())
+                .build();
+    }
+
+    public static VideoSettingDto toDto(VideoSetting entity) {
+        return VideoSettingDto.builder()
+                .id(entity.getId())
+                .name(entity.getName())
+                .description(entity.getDescription())
+                .active(entity.getActive())
+                .fps(entity.getFps())
+                .height(entity.getHeight())
+                .width(entity.getWidth())
+                .introPresent(entity.getIntroPresent())
+                .introTime(entity.getIntroTime())
+                .mainVideoPresent(entity.getMainVideoPresent())
+                .mainVideoTime(entity.getMainVideoTime())
+                .outroPresent(entity.getOutroPresent())
+                .outroTime(entity.getOutroTime())
+                .sequence(entity.getSequence())
+                .soundPresent(entity.getSoundPresent())
+                .lastlyUsed(entity.getLastlyUsed())
                 .build();
     }
 }
