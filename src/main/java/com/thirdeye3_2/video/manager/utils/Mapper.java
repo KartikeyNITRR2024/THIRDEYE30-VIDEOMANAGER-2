@@ -7,6 +7,7 @@ import com.thirdeye3_2.video.manager.dtos.AudioGenerateDto;
 import com.thirdeye3_2.video.manager.dtos.CurrentVideoDto;
 import com.thirdeye3_2.video.manager.dtos.IntroVideoDto;
 import com.thirdeye3_2.video.manager.dtos.NewsDto;
+import com.thirdeye3_2.video.manager.dtos.OutroVideoDto;
 import com.thirdeye3_2.video.manager.dtos.StockDto;
 import com.thirdeye3_2.video.manager.dtos.StockGroupDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDetailsDto;
@@ -16,6 +17,7 @@ import com.thirdeye3_2.video.manager.entities.AudioGenerate;
 import com.thirdeye3_2.video.manager.entities.CurrentVideo;
 import com.thirdeye3_2.video.manager.entities.IntroVideo;
 import com.thirdeye3_2.video.manager.entities.News;
+import com.thirdeye3_2.video.manager.entities.OutroVideo;
 import com.thirdeye3_2.video.manager.entities.Stock;
 import com.thirdeye3_2.video.manager.entities.StockGroup;
 import com.thirdeye3_2.video.manager.entities.Video;
@@ -304,6 +306,54 @@ public class Mapper {
         dto.setLineWidth(entity.getLineWidth());
         dto.setAdImageHeight(entity.getAdImageHeight());
         dto.setAdImageWidth(entity.getAdImageWidth());
+        dto.setLastlyUsed(entity.getLastlyUsed());
+        return dto;
+    }
+    
+    public static OutroVideo toEntity(OutroVideoDto dto) {
+        return OutroVideo.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .active(dto.getActive())
+                .isBackgroundImage(dto.getIsBackgroundImage())
+                .backgroundImage(dto.getBackgroundImage())
+                .backgroundColor(dto.getBackgroundColor())
+                .backgroundOpacity(dto.getBackgroundOpacity())
+                .isHeaderPresent(dto.getIsHeaderPresent())
+                .headerFontType(dto.getHeaderFontType())
+                .headerFontName(dto.getHeaderFontName())
+                .headerSize(dto.getHeaderSize())
+                .headerColor(dto.getHeaderColor())
+                .isSubHeaderPresent(dto.getIsSubHeaderPresent())
+                .subHeaderFontType(dto.getSubHeaderFontType())
+                .subHeaderFontName(dto.getSubHeaderFontName())
+                .subHeaderSize(dto.getSubHeaderSize())
+                .subHeaderColor(dto.getSubHeaderColor())
+                .lastlyUsed(dto.getLastlyUsed())
+                .build();
+    }
+
+    public static OutroVideoDto toDto(OutroVideo entity) {
+        OutroVideoDto dto = new OutroVideoDto();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setDescription(entity.getDescription());
+        dto.setActive(entity.getActive());
+        dto.setIsBackgroundImage(entity.getIsBackgroundImage());
+        dto.setBackgroundImage(entity.getBackgroundImage());
+        dto.setBackgroundColor(entity.getBackgroundColor());
+        dto.setBackgroundOpacity(entity.getBackgroundOpacity());
+        dto.setIsHeaderPresent(entity.getIsHeaderPresent());
+        dto.setHeaderFontType(entity.getHeaderFontType());
+        dto.setHeaderFontName(entity.getHeaderFontName());
+        dto.setHeaderSize(entity.getHeaderSize());
+        dto.setHeaderColor(entity.getHeaderColor());
+        dto.setIsSubHeaderPresent(entity.getIsSubHeaderPresent());
+        dto.setSubHeaderFontType(entity.getSubHeaderFontType());
+        dto.setSubHeaderFontName(entity.getSubHeaderFontName());
+        dto.setSubHeaderSize(entity.getSubHeaderSize());
+        dto.setSubHeaderColor(entity.getSubHeaderColor());
         dto.setLastlyUsed(entity.getLastlyUsed());
         return dto;
     }
