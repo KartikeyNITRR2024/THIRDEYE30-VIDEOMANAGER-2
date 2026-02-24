@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import com.thirdeye3_2.video.manager.dtos.AudioGenerateDto;
 import com.thirdeye3_2.video.manager.dtos.CurrentVideoDto;
+import com.thirdeye3_2.video.manager.dtos.IntroVideoDto;
 import com.thirdeye3_2.video.manager.dtos.NewsDto;
 import com.thirdeye3_2.video.manager.dtos.StockDto;
 import com.thirdeye3_2.video.manager.dtos.StockGroupDto;
@@ -13,6 +14,7 @@ import com.thirdeye3_2.video.manager.dtos.VideoDto;
 import com.thirdeye3_2.video.manager.dtos.VideoSettingDto;
 import com.thirdeye3_2.video.manager.entities.AudioGenerate;
 import com.thirdeye3_2.video.manager.entities.CurrentVideo;
+import com.thirdeye3_2.video.manager.entities.IntroVideo;
 import com.thirdeye3_2.video.manager.entities.News;
 import com.thirdeye3_2.video.manager.entities.Stock;
 import com.thirdeye3_2.video.manager.entities.StockGroup;
@@ -246,5 +248,63 @@ public class Mapper {
                 .soundPresent(entity.getSoundPresent())
                 .lastlyUsed(entity.getLastlyUsed())
                 .build();
+    }
+    
+    public static IntroVideo toEntity(IntroVideoDto dto) {
+        return IntroVideo.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .active(dto.getActive())
+                .isBackgroundImage(dto.getIsBackgroundImage())
+                .backgroundImage(dto.getBackgroundImage())
+                .backgroundColor(dto.getBackgroundColor())
+                .backgroundOpacity(dto.getBackgroundOpacity())
+                .isHeaderPresent(dto.getIsHeaderPresent())
+                .headerFontType(dto.getHeaderFontType())
+                .headerFontName(dto.getHeaderFontName())
+                .headerSize(dto.getHeaderSize())
+                .headerColor(dto.getHeaderColor())
+                .isSubHeaderPresent(dto.getIsSubHeaderPresent())
+                .subHeaderFontType(dto.getSubHeaderFontType())
+                .subHeaderFontName(dto.getSubHeaderFontName())
+                .subHeaderSize(dto.getSubHeaderSize())
+                .subHeaderColor(dto.getSubHeaderColor())
+                .isLinePresent(dto.getIsLinePresent())
+                .lineColor(dto.getLineColor())
+                .lineWidth(dto.getLineWidth())
+                .adImageHeight(dto.getAdImageHeight())
+                .adImageWidth(dto.getAdImageWidth())
+                .lastlyUsed(dto.getLastlyUsed())
+                .build();
+    }
+
+    public static IntroVideoDto toDto(IntroVideo entity) {
+        IntroVideoDto dto = new IntroVideoDto();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setDescription(entity.getDescription());
+        dto.setActive(entity.getActive());
+        dto.setIsBackgroundImage(entity.getIsBackgroundImage());
+        dto.setBackgroundImage(entity.getBackgroundImage());
+        dto.setBackgroundColor(entity.getBackgroundColor());
+        dto.setBackgroundOpacity(entity.getBackgroundOpacity());
+        dto.setIsHeaderPresent(entity.getIsHeaderPresent());
+        dto.setHeaderFontType(entity.getHeaderFontType());
+        dto.setHeaderFontName(entity.getHeaderFontName());
+        dto.setHeaderSize(entity.getHeaderSize());
+        dto.setHeaderColor(entity.getHeaderColor());
+        dto.setIsSubHeaderPresent(entity.getIsSubHeaderPresent());
+        dto.setSubHeaderFontType(entity.getSubHeaderFontType());
+        dto.setSubHeaderFontName(entity.getSubHeaderFontName());
+        dto.setSubHeaderSize(entity.getSubHeaderSize());
+        dto.setSubHeaderColor(entity.getSubHeaderColor());
+        dto.setIsLinePresent(entity.getIsLinePresent());
+        dto.setLineColor(entity.getLineColor());
+        dto.setLineWidth(entity.getLineWidth());
+        dto.setAdImageHeight(entity.getAdImageHeight());
+        dto.setAdImageWidth(entity.getAdImageWidth());
+        dto.setLastlyUsed(entity.getLastlyUsed());
+        return dto;
     }
 }
