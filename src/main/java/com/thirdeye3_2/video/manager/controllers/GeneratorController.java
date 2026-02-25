@@ -9,6 +9,7 @@ import com.thirdeye3_2.video.manager.dtos.MultiMediaResponseDto;
 import com.thirdeye3_2.video.manager.dtos.MultiMediaUploadDto;
 import com.thirdeye3_2.video.manager.dtos.Response;
 import com.thirdeye3_2.video.manager.dtos.StockPriceFetcherResponseDto;
+import com.thirdeye3_2.video.manager.dtos.VideoGenerateFetcherResponseDto;
 import com.thirdeye3_2.video.manager.services.GeneratorService;
 import com.thirdeye3_2.video.manager.services.MultiMediaService;
 
@@ -30,6 +31,11 @@ public class GeneratorController {
 	@GetMapping("/audio-generater-fetcher")
     public Response<AudioGenerateFetcherResponseDto> audioGeneraterFetcher() {
         return new Response<>(true, 0, null, generatorService.audioGeneraterFetcher());
+    }
+	
+	@GetMapping("/video-generater-fetcher")
+    public Response<VideoGenerateFetcherResponseDto> videoGeneraterFetcher() {
+        return new Response<>(true, 0, null, generatorService.videoGeneraterFetcher());
     }
 	
 	@PostMapping(value = "/upload-multi-media", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
