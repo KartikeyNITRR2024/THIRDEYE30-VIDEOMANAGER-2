@@ -12,7 +12,7 @@ public class IntroVideoDto {
     private String description;
     private Boolean active;
     private Boolean isBackgroundImage;
-    private String backgroundImage;
+    private UUID backgroundImage;
     private String backgroundColor;
     private Double backgroundOpacity;
     private Boolean isHeaderPresent;

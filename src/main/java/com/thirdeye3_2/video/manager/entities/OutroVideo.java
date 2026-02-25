@@ -38,7 +38,7 @@ public class OutroVideo {
     private Boolean isBackgroundImage;
     
     @Column(name = "background_image")
-    private String backgroundImage;
+    private UUID backgroundImage;
 
     @Column(name = "background_color")
     private String backgroundColor;

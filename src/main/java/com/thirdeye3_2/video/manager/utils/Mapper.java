@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.thirdeye3_2.video.manager.dtos.AudioGenerateDto;
+import com.thirdeye3_2.video.manager.dtos.ContentVideoDto;
 import com.thirdeye3_2.video.manager.dtos.CurrentVideoDto;
 import com.thirdeye3_2.video.manager.dtos.IntroVideoDto;
 import com.thirdeye3_2.video.manager.dtos.NewsDto;
@@ -14,6 +15,7 @@ import com.thirdeye3_2.video.manager.dtos.VideoDetailsDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDto;
 import com.thirdeye3_2.video.manager.dtos.VideoSettingDto;
 import com.thirdeye3_2.video.manager.entities.AudioGenerate;
+import com.thirdeye3_2.video.manager.entities.ContentVideo;
 import com.thirdeye3_2.video.manager.entities.CurrentVideo;
 import com.thirdeye3_2.video.manager.entities.IntroVideo;
 import com.thirdeye3_2.video.manager.entities.News;
@@ -355,6 +357,72 @@ public class Mapper {
         dto.setSubHeaderSize(entity.getSubHeaderSize());
         dto.setSubHeaderColor(entity.getSubHeaderColor());
         dto.setLastlyUsed(entity.getLastlyUsed());
+        return dto;
+    }
+    
+    public static ContentVideo toEntity(ContentVideoDto dto) {
+        return ContentVideo.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .active(dto.getActive())
+                .isBackgroundImage(dto.getIsBackgroundImage())
+                .backgroundImage(dto.getBackgroundImage())
+                .backgroundColor(dto.getBackgroundColor())
+                .backgroundOpacity(dto.getBackgroundOpacity())
+                .isHeaderPresent(dto.getIsHeaderPresent())
+                .headerType(dto.getHeaderType())
+                .headerHeightInPercent(dto.getHeaderHeightInPercent())
+                .headerStartingPosition(dto.getHeaderStartingPosition())
+                .isBarRace(dto.getIsBarRace())
+                .barRaceType(dto.getBarRaceType())
+                .barRaceHeightInPercent(dto.getBarRaceHeightInPercent())
+                .barRaceStartingPosition(dto.getBarRaceStartingPosition())
+                .isNewsImage(dto.getIsNewsImage())
+                .newsImageType(dto.getNewsImageType())
+                .newsImageHeightInPercent(dto.getNewsImageHeightInPercent())
+                .newsImageStartingPosition(dto.getNewsImageStartingPosition())
+                .isNewsText(dto.getIsNewsText())
+                .newsTextType(dto.getNewsTextType())
+                .newsTexteHeightInPercent(dto.getNewsTexteHeightInPercent())
+                .newsTextStartingPosition(dto.getNewsTextStartingPosition())
+                .isAudio(dto.getIsAudio())
+                .audioMultiMediaKey(dto.getAudioMultiMediaKey())
+                .lastlyUsed(dto.getLastlyUsed())
+                .build();
+    }
+
+    public static ContentVideoDto toDto(ContentVideo entity) {
+        ContentVideoDto dto = new ContentVideoDto();
+
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setDescription(entity.getDescription());
+        dto.setActive(entity.getActive());
+        dto.setIsBackgroundImage(entity.getIsBackgroundImage());
+        dto.setBackgroundImage(entity.getBackgroundImage());
+        dto.setBackgroundColor(entity.getBackgroundColor());
+        dto.setBackgroundOpacity(entity.getBackgroundOpacity());
+        dto.setIsHeaderPresent(entity.getIsHeaderPresent());
+        dto.setHeaderType(entity.getHeaderType());
+        dto.setHeaderHeightInPercent(entity.getHeaderHeightInPercent());
+        dto.setHeaderStartingPosition(entity.getHeaderStartingPosition());
+        dto.setIsBarRace(entity.getIsBarRace());
+        dto.setBarRaceType(entity.getBarRaceType());
+        dto.setBarRaceHeightInPercent(entity.getBarRaceHeightInPercent());
+        dto.setBarRaceStartingPosition(entity.getBarRaceStartingPosition());
+        dto.setIsNewsImage(entity.getIsNewsImage());
+        dto.setNewsImageType(entity.getNewsImageType());
+        dto.setNewsImageHeightInPercent(entity.getNewsImageHeightInPercent());
+        dto.setNewsImageStartingPosition(entity.getNewsImageStartingPosition());
+        dto.setIsNewsText(entity.getIsNewsText());
+        dto.setNewsTextType(entity.getNewsTextType());
+        dto.setNewsTexteHeightInPercent(entity.getNewsTexteHeightInPercent());
+        dto.setNewsTextStartingPosition(entity.getNewsTextStartingPosition());
+        dto.setIsAudio(entity.getIsAudio());
+        dto.setAudioMultiMediaKey(entity.getAudioMultiMediaKey());
+        dto.setLastlyUsed(entity.getLastlyUsed());
+
         return dto;
     }
 }
