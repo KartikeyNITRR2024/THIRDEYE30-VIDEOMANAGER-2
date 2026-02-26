@@ -491,3 +491,19 @@ Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 54 more
+2026-02-26 23:08:35.845397+05:30 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM NEWS \000d\000a[*]SELECT * FROM VIDEO_DETAILS"; SQL statement:
+SELECT * FROM NEWS 
+SELECT * FROM VIDEO_DETAILS [42000-224]
+2026-02-26 23:08:51.141550+05:30 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM NEWS \000d\000a[*]SELECT * FROM VIDEO_DETAILS"; SQL statement:
+SELECT * FROM NEWS 
+SELECT * FROM VIDEO_DETAILS [42000-224]
+2026-02-26 23:12:08.179054+05:30 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM VIDEO_SETTING \000d\000a[*]10VIDEO_DETAILS"; SQL statement:
+SELECT * FROM VIDEO_SETTING 
+10VIDEO_DETAILS [42000-224]
+2026-02-26 23:12:14.087417+05:30 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM VIDEO_SETTING \000d\000a[*]10VIDEO_DETAILS"; SQL statement:
+SELECT * FROM VIDEO_SETTING 
+10VIDEO_DETAILS [42000-224]
