@@ -92,6 +92,15 @@ public class IntroVideo {
     @Column(name = "ad_image_width")
     private Integer adImageWidth; 
     
+    @Column(name = "is_audio")
+    private Boolean isAudio;
+    
+    @Column(name = "audio_multimedia_key")
+    private UUID audioMultiMediaKey;
+    
+    @Column(name = "audio_volumne")
+    private Integer audioVolumne;
+    
     @Column(name = "lastly_used") 
     private LocalDateTime lastlyUsed;
 

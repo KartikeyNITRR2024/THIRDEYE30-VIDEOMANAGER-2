@@ -66,8 +66,14 @@ public class VideoSetting {
     @Column(name = "sequence")
     private String sequence;
 
-    @Column(name = "sound_present")
-    private Boolean soundPresent;
+    @Column(name = "is_audio")
+    private Boolean isAudio;
+    
+    @Column(name = "audio_multimedia_key")
+    private UUID audioMultiMediaKey;
+    
+    @Column(name = "audio_volumne")
+    private Integer audioVolumne;
     
     @Column(name = "lastly_used")
     private LocalDateTime lastlyUsed;

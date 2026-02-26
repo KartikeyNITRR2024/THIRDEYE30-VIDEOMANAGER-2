@@ -45,6 +45,7 @@ public class ContentVideoDto {
 
     private Boolean isAudio;
     private UUID audioMultiMediaKey;
+    private Integer audioVolumne;
 
     private LocalDateTime lastlyUsed;
 }

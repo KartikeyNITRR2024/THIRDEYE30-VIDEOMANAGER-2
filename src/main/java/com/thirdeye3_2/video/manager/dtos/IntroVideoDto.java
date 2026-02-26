@@ -30,5 +30,8 @@ public class IntroVideoDto {
     private Integer lineWidth;
     private Integer adImageHeight;
     private Integer adImageWidth;
+    private Boolean isAudio;
+    private UUID audioMultiMediaKey;
+    private Integer audioVolumne;
     private LocalDateTime lastlyUsed;
 }

@@ -26,5 +26,8 @@ public class OutroVideoDto {
     private String subHeaderFontName;
     private Integer subHeaderSize;
     private String subHeaderColor;
+    private Boolean isAudio;
+    private UUID audioMultiMediaKey;
+    private Integer audioVolumne;
     private LocalDateTime lastlyUsed;
 }

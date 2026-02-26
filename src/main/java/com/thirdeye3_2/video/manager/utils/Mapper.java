@@ -228,7 +228,9 @@ public class Mapper {
                 .outroPresent(dto.getOutroPresent())
                 .outroTime(dto.getOutroTime())
                 .sequence(dto.getSequence())
-                .soundPresent(dto.getSoundPresent())
+                .isAudio(dto.getIsAudio())
+                .audioMultiMediaKey(dto.getAudioMultiMediaKey())
+                .audioVolumne(dto.getAudioVolumne())
                 .lastlyUsed(dto.getLastlyUsed())
                 .build();
     }
@@ -249,7 +251,9 @@ public class Mapper {
                 .outroPresent(entity.getOutroPresent())
                 .outroTime(entity.getOutroTime())
                 .sequence(entity.getSequence())
-                .soundPresent(entity.getSoundPresent())
+                .isAudio(entity.getIsAudio())
+                .audioMultiMediaKey(entity.getAudioMultiMediaKey())
+                .audioVolumne(entity.getAudioVolumne())
                 .lastlyUsed(entity.getLastlyUsed())
                 .build();
     }
@@ -279,6 +283,9 @@ public class Mapper {
                 .lineWidth(dto.getLineWidth())
                 .adImageHeight(dto.getAdImageHeight())
                 .adImageWidth(dto.getAdImageWidth())
+                .audioMultiMediaKey(dto.getAudioMultiMediaKey())
+                .audioVolumne(dto.getAudioVolumne())
+                .lastlyUsed(dto.getLastlyUsed())
                 .lastlyUsed(dto.getLastlyUsed())
                 .build();
     }
@@ -308,6 +315,9 @@ public class Mapper {
         dto.setLineWidth(entity.getLineWidth());
         dto.setAdImageHeight(entity.getAdImageHeight());
         dto.setAdImageWidth(entity.getAdImageWidth());
+        dto.setIsAudio(entity.getIsAudio());
+        dto.setAudioMultiMediaKey(entity.getAudioMultiMediaKey());
+        dto.setAudioVolumne(entity.getAudioVolumne());
         dto.setLastlyUsed(entity.getLastlyUsed());
         return dto;
     }
@@ -332,6 +342,9 @@ public class Mapper {
                 .subHeaderFontName(dto.getSubHeaderFontName())
                 .subHeaderSize(dto.getSubHeaderSize())
                 .subHeaderColor(dto.getSubHeaderColor())
+                .isAudio(dto.getIsAudio())
+                .audioMultiMediaKey(dto.getAudioMultiMediaKey())
+                .audioVolumne(dto.getAudioVolumne())
                 .lastlyUsed(dto.getLastlyUsed())
                 .build();
     }
@@ -356,6 +369,9 @@ public class Mapper {
         dto.setSubHeaderFontName(entity.getSubHeaderFontName());
         dto.setSubHeaderSize(entity.getSubHeaderSize());
         dto.setSubHeaderColor(entity.getSubHeaderColor());
+        dto.setIsAudio(entity.getIsAudio());
+        dto.setAudioMultiMediaKey(entity.getAudioMultiMediaKey());
+        dto.setAudioVolumne(entity.getAudioVolumne());
         dto.setLastlyUsed(entity.getLastlyUsed());
         return dto;
     }
@@ -388,6 +404,7 @@ public class Mapper {
                 .newsTextStartingPosition(dto.getNewsTextStartingPosition())
                 .isAudio(dto.getIsAudio())
                 .audioMultiMediaKey(dto.getAudioMultiMediaKey())
+                .audioVolumne(dto.getAudioVolumne())
                 .lastlyUsed(dto.getLastlyUsed())
                 .build();
     }
@@ -421,6 +438,7 @@ public class Mapper {
         dto.setNewsTextStartingPosition(entity.getNewsTextStartingPosition());
         dto.setIsAudio(entity.getIsAudio());
         dto.setAudioMultiMediaKey(entity.getAudioMultiMediaKey());
+        dto.setAudioVolumne(entity.getAudioVolumne());
         dto.setLastlyUsed(entity.getLastlyUsed());
 
         return dto;
