@@ -31,7 +31,6 @@ public class News {
     @Column(name = "header", nullable = false)
     private String header;
 
-    @Lob
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
