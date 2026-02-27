@@ -33,6 +33,7 @@ import com.thirdeye3_2.video.manager.services.CurrentVideoService;
 import com.thirdeye3_2.video.manager.services.GeneratorService;
 import com.thirdeye3_2.video.manager.services.HeaderService;
 import com.thirdeye3_2.video.manager.services.IntroVideoService;
+import com.thirdeye3_2.video.manager.services.NewsImageService;
 import com.thirdeye3_2.video.manager.services.NewsService;
 import com.thirdeye3_2.video.manager.services.OutroVideoService;
 import com.thirdeye3_2.video.manager.services.StockGroupService;
@@ -77,6 +78,9 @@ public class GeneratorServiceImpl implements GeneratorService {
 	 
 	 @Autowired
 	 private HeaderService headerService; 
+	 
+	 @Autowired
+	 private NewsImageService newsImageService;
 	 
 	 public VideoDto getCurrentVideo()
 	 {
@@ -209,6 +213,10 @@ public class GeneratorServiceImpl implements GeneratorService {
 			 if(contentVideoDto.getIsHeaderPresent())
 			 {
 				 videoGenerateFetcherResponseDto.setHeaderDto(headerService.getActive());
+			 }
+			 if(contentVideoDto.getIsNewsImage())
+			 {
+				 videoGenerateFetcherResponseDto.setNewsImageDto(newsImageService.getActive());
 			 }
 		 }
 		 videoGenerateFetcherResponseDto.setCurrentTime(LocalDateTime.now());

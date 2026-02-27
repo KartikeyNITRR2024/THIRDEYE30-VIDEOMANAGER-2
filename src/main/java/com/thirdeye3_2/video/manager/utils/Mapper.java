@@ -9,6 +9,7 @@ import com.thirdeye3_2.video.manager.dtos.CurrentVideoDto;
 import com.thirdeye3_2.video.manager.dtos.HeaderDto;
 import com.thirdeye3_2.video.manager.dtos.IntroVideoDto;
 import com.thirdeye3_2.video.manager.dtos.NewsDto;
+import com.thirdeye3_2.video.manager.dtos.NewsImageDto;
 import com.thirdeye3_2.video.manager.dtos.OutroVideoDto;
 import com.thirdeye3_2.video.manager.dtos.StockDto;
 import com.thirdeye3_2.video.manager.dtos.StockGroupDto;
@@ -21,6 +22,7 @@ import com.thirdeye3_2.video.manager.entities.CurrentVideo;
 import com.thirdeye3_2.video.manager.entities.Header;
 import com.thirdeye3_2.video.manager.entities.IntroVideo;
 import com.thirdeye3_2.video.manager.entities.News;
+import com.thirdeye3_2.video.manager.entities.NewsImage;
 import com.thirdeye3_2.video.manager.entities.OutroVideo;
 import com.thirdeye3_2.video.manager.entities.Stock;
 import com.thirdeye3_2.video.manager.entities.StockGroup;
@@ -489,6 +491,44 @@ public class Mapper {
         dto.setAnimCycle(entity.getAnimCycle());
         dto.setAnimEase(entity.getAnimEase());
         dto.setAnimBuffer(entity.getAnimBuffer());
+        dto.setLastlyUsed(entity.getLastlyUsed());
+
+        return dto;
+    }
+    
+    public static NewsImage toEntity(NewsImageDto dto) {
+        return NewsImage.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .active(dto.getActive())
+                .enterFrom(dto.getEnterFrom())
+                .exitTo(dto.getExitTo())
+                .transitionT(dto.getTransitionT())
+                .marginScale(dto.getMarginScale())
+                .animationMode(dto.getAnimationMode())
+                .zoomIntensity(dto.getZoomIntensity())
+                .isSpinEnabled(dto.getIsSpinEnabled())
+                .spinSpeed(dto.getSpinSpeed())
+                .lastlyUsed(dto.getLastlyUsed())
+                .build();
+    }
+
+    public static NewsImageDto toDto(NewsImage entity) {
+        NewsImageDto dto = new NewsImageDto();
+
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setDescription(entity.getDescription());
+        dto.setActive(entity.getActive());
+        dto.setEnterFrom(entity.getEnterFrom());
+        dto.setExitTo(entity.getExitTo());
+        dto.setTransitionT(entity.getTransitionT());
+        dto.setMarginScale(entity.getMarginScale());
+        dto.setAnimationMode(entity.getAnimationMode());
+        dto.setZoomIntensity(entity.getZoomIntensity());
+        dto.setIsSpinEnabled(entity.getIsSpinEnabled());
+        dto.setSpinSpeed(entity.getSpinSpeed());
         dto.setLastlyUsed(entity.getLastlyUsed());
 
         return dto;
