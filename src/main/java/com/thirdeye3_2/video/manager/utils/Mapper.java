@@ -10,6 +10,7 @@ import com.thirdeye3_2.video.manager.dtos.HeaderDto;
 import com.thirdeye3_2.video.manager.dtos.IntroVideoDto;
 import com.thirdeye3_2.video.manager.dtos.NewsDto;
 import com.thirdeye3_2.video.manager.dtos.NewsImageDto;
+import com.thirdeye3_2.video.manager.dtos.NewsTextSoundDto;
 import com.thirdeye3_2.video.manager.dtos.OutroVideoDto;
 import com.thirdeye3_2.video.manager.dtos.StockDto;
 import com.thirdeye3_2.video.manager.dtos.StockGroupDto;
@@ -23,6 +24,7 @@ import com.thirdeye3_2.video.manager.entities.Header;
 import com.thirdeye3_2.video.manager.entities.IntroVideo;
 import com.thirdeye3_2.video.manager.entities.News;
 import com.thirdeye3_2.video.manager.entities.NewsImage;
+import com.thirdeye3_2.video.manager.entities.NewsTextSound;
 import com.thirdeye3_2.video.manager.entities.OutroVideo;
 import com.thirdeye3_2.video.manager.entities.Stock;
 import com.thirdeye3_2.video.manager.entities.StockGroup;
@@ -529,6 +531,68 @@ public class Mapper {
         dto.setZoomIntensity(entity.getZoomIntensity());
         dto.setIsSpinEnabled(entity.getIsSpinEnabled());
         dto.setSpinSpeed(entity.getSpinSpeed());
+        dto.setLastlyUsed(entity.getLastlyUsed());
+
+        return dto;
+    }
+    
+    public static NewsTextSound toEntity(NewsTextSoundDto dto) {
+        return NewsTextSound.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .active(dto.getActive())
+                .bgTheme(dto.getBgTheme())
+                .accentColor(dto.getAccentColor())
+                .textColor(dto.getTextColor())
+                .boxAlpha(dto.getBoxAlpha())
+                .boxPad(dto.getBoxPad())
+                .dpi(dto.getDpi())
+                .transitionT(dto.getTransitionT())
+                .enterFrom(dto.getEnterFrom())
+                .exitTo(dto.getExitTo())
+                .focusY(dto.getFocusY())
+                .gapMain(dto.getGapMain())
+                .gapSub(dto.getGapSub())
+                .sideScale(dto.getSideScale())
+                .headerWrap(dto.getHeaderWrap())
+                .contentWrap(dto.getContentWrap())
+                .otherWrap(dto.getOtherWrap())
+                .baseFontSize(dto.getBaseFontSize())
+                .isAudio(dto.getIsAudio())
+                .endSilenceTimeInSeconds(dto.getEndSilenceTimeInSeconds())
+                .audioVolumne(dto.getAudioVolumne())
+                .lastlyUsed(dto.getLastlyUsed())
+                .build();
+    }
+
+    public static NewsTextSoundDto toDto(NewsTextSound entity) {
+        NewsTextSoundDto dto = new NewsTextSoundDto();
+
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setDescription(entity.getDescription());
+        dto.setActive(entity.getActive());
+        dto.setBgTheme(entity.getBgTheme());
+        dto.setAccentColor(entity.getAccentColor());
+        dto.setTextColor(entity.getTextColor());
+        dto.setBoxAlpha(entity.getBoxAlpha());
+        dto.setBoxPad(entity.getBoxPad());
+        dto.setDpi(entity.getDpi());
+        dto.setTransitionT(entity.getTransitionT());
+        dto.setEnterFrom(entity.getEnterFrom());
+        dto.setExitTo(entity.getExitTo());
+        dto.setFocusY(entity.getFocusY());
+        dto.setGapMain(entity.getGapMain());
+        dto.setGapSub(entity.getGapSub());
+        dto.setSideScale(entity.getSideScale());
+        dto.setHeaderWrap(entity.getHeaderWrap());
+        dto.setContentWrap(entity.getContentWrap());
+        dto.setOtherWrap(entity.getOtherWrap());
+        dto.setBaseFontSize(entity.getBaseFontSize());
+        dto.setIsAudio(entity.getIsAudio());
+        dto.setEndSilenceTimeInSeconds(entity.getEndSilenceTimeInSeconds());
+        dto.setAudioVolumne(entity.getAudioVolumne());
         dto.setLastlyUsed(entity.getLastlyUsed());
 
         return dto;
