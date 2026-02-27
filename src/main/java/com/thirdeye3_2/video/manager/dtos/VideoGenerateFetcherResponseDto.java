@@ -18,5 +18,6 @@ public class VideoGenerateFetcherResponseDto {
     private OutroVideoDto outroVideoDto;
     private List<NewsDto> newsDtos;
     private Map<String, String> stockCodeToNameMap;
+    private HeaderDto headerDto;
     private LocalDateTime currentTime;
 }

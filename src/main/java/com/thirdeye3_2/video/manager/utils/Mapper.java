@@ -6,6 +6,7 @@ import java.util.UUID;
 import com.thirdeye3_2.video.manager.dtos.AudioGenerateDto;
 import com.thirdeye3_2.video.manager.dtos.ContentVideoDto;
 import com.thirdeye3_2.video.manager.dtos.CurrentVideoDto;
+import com.thirdeye3_2.video.manager.dtos.HeaderDto;
 import com.thirdeye3_2.video.manager.dtos.IntroVideoDto;
 import com.thirdeye3_2.video.manager.dtos.NewsDto;
 import com.thirdeye3_2.video.manager.dtos.OutroVideoDto;
@@ -17,6 +18,7 @@ import com.thirdeye3_2.video.manager.dtos.VideoSettingDto;
 import com.thirdeye3_2.video.manager.entities.AudioGenerate;
 import com.thirdeye3_2.video.manager.entities.ContentVideo;
 import com.thirdeye3_2.video.manager.entities.CurrentVideo;
+import com.thirdeye3_2.video.manager.entities.Header;
 import com.thirdeye3_2.video.manager.entities.IntroVideo;
 import com.thirdeye3_2.video.manager.entities.News;
 import com.thirdeye3_2.video.manager.entities.OutroVideo;
@@ -439,6 +441,54 @@ public class Mapper {
         dto.setIsAudio(entity.getIsAudio());
         dto.setAudioMultiMediaKey(entity.getAudioMultiMediaKey());
         dto.setAudioVolumne(entity.getAudioVolumne());
+        dto.setLastlyUsed(entity.getLastlyUsed());
+
+        return dto;
+    }
+    
+    public static Header toEntity(HeaderDto dto) {
+        return Header.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .active(dto.getActive())
+                .backgroundColor(dto.getBackgroundColor())
+                .accentColor(dto.getAccentColor())
+                .badgeColor(dto.getBadgeColor())
+                .textColor(dto.getTextColor())
+                .isBadgePresent(dto.getIsBadgePresent())
+                .badgeWidthPct(dto.getBadgeWidthPct())
+                .badgePosition(dto.getBadgePosition())
+                .accentHeightPct(dto.getAccentHeightPct())
+                .textSize(dto.getTextSize())
+                .logoSize(dto.getLogoSize())
+                .animCycle(dto.getAnimCycle())
+                .animEase(dto.getAnimEase())
+                .animBuffer(dto.getAnimBuffer())
+                .lastlyUsed(dto.getLastlyUsed())
+                .build();
+    }
+
+    public static HeaderDto toDto(Header entity) {
+        HeaderDto dto = new HeaderDto();
+
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setDescription(entity.getDescription());
+        dto.setActive(entity.getActive());
+        dto.setBackgroundColor(entity.getBackgroundColor());
+        dto.setAccentColor(entity.getAccentColor());
+        dto.setBadgeColor(entity.getBadgeColor());
+        dto.setTextColor(entity.getTextColor());
+        dto.setIsBadgePresent(entity.getIsBadgePresent());
+        dto.setBadgeWidthPct(entity.getBadgeWidthPct());
+        dto.setBadgePosition(entity.getBadgePosition());
+        dto.setAccentHeightPct(entity.getAccentHeightPct());
+        dto.setTextSize(entity.getTextSize());
+        dto.setLogoSize(entity.getLogoSize());
+        dto.setAnimCycle(entity.getAnimCycle());
+        dto.setAnimEase(entity.getAnimEase());
+        dto.setAnimBuffer(entity.getAnimBuffer());
         dto.setLastlyUsed(entity.getLastlyUsed());
 
         return dto;

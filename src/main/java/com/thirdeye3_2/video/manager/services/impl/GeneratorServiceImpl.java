@@ -31,6 +31,7 @@ import com.thirdeye3_2.video.manager.services.AudioGenerateService;
 import com.thirdeye3_2.video.manager.services.ContentVideoService;
 import com.thirdeye3_2.video.manager.services.CurrentVideoService;
 import com.thirdeye3_2.video.manager.services.GeneratorService;
+import com.thirdeye3_2.video.manager.services.HeaderService;
 import com.thirdeye3_2.video.manager.services.IntroVideoService;
 import com.thirdeye3_2.video.manager.services.NewsService;
 import com.thirdeye3_2.video.manager.services.OutroVideoService;
@@ -73,6 +74,9 @@ public class GeneratorServiceImpl implements GeneratorService {
 	 
 	 @Autowired
 	 private ContentVideoService contentVideoService;
+	 
+	 @Autowired
+	 private HeaderService headerService; 
 	 
 	 public VideoDto getCurrentVideo()
 	 {
@@ -178,7 +182,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 						 finalList.add(newsDto);
 					 }
 				 }
-				 videoGenerateFetcherResponseDto.setNewsDtos(newsDtos);
+				 videoGenerateFetcherResponseDto.setNewsDtos(finalList);
 			 }
 			 if(contentVideoDto.getIsBarRace())
 			 {
@@ -202,10 +206,12 @@ public class GeneratorServiceImpl implements GeneratorService {
 					 videoGenerateFetcherResponseDto.setStockCodeToNameMap(stockCodeToNameMap);
 				 }
 			 }
+			 if(contentVideoDto.getIsHeaderPresent())
+			 {
+				 videoGenerateFetcherResponseDto.setHeaderDto(headerService.getActive());
+			 }
 		 }
 		 videoGenerateFetcherResponseDto.setCurrentTime(LocalDateTime.now());
 		 return videoGenerateFetcherResponseDto;
 	 }
-	 
-	 
 }
