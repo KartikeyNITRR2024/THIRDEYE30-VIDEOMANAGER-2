@@ -14,6 +14,7 @@ import com.thirdeye3_2.video.manager.dtos.NewsTextSoundDto;
 import com.thirdeye3_2.video.manager.dtos.OutroVideoDto;
 import com.thirdeye3_2.video.manager.dtos.StockDto;
 import com.thirdeye3_2.video.manager.dtos.StockGroupDto;
+import com.thirdeye3_2.video.manager.dtos.StockRaceDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDetailsDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDto;
 import com.thirdeye3_2.video.manager.dtos.VideoSettingDto;
@@ -28,6 +29,7 @@ import com.thirdeye3_2.video.manager.entities.NewsTextSound;
 import com.thirdeye3_2.video.manager.entities.OutroVideo;
 import com.thirdeye3_2.video.manager.entities.Stock;
 import com.thirdeye3_2.video.manager.entities.StockGroup;
+import com.thirdeye3_2.video.manager.entities.StockRace;
 import com.thirdeye3_2.video.manager.entities.Video;
 import com.thirdeye3_2.video.manager.entities.VideoDetails;
 import com.thirdeye3_2.video.manager.entities.VideoSetting;
@@ -593,6 +595,54 @@ public class Mapper {
         dto.setIsAudio(entity.getIsAudio());
         dto.setEndSilenceTimeInSeconds(entity.getEndSilenceTimeInSeconds());
         dto.setAudioVolumne(entity.getAudioVolumne());
+        dto.setLastlyUsed(entity.getLastlyUsed());
+
+        return dto;
+    }
+    
+    public static StockRace toEntity(StockRaceDto dto) {
+        return StockRace.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .active(dto.getActive())
+                .accentColor(dto.getAccentColor())
+                .textColor(dto.getTextColor())
+                .bgBadgeColor(dto.getBgBadgeColor())
+                .barAlpha(dto.getBarAlpha())
+                .glowSize(dto.getGlowSize())
+                .barColors(dto.getBarColors())
+                .baseFontSize(dto.getBaseFontSize())
+                .labelFontSize(dto.getLabelFontSize())
+                .valueFontSize(dto.getValueFontSize())
+                .clockFontSize(dto.getClockFontSize())
+                .barHeight(dto.getBarHeight())
+                .topN(dto.getTopN())
+                .xLimitMultiplier(dto.getXLimitMultiplier())
+                .lastlyUsed(dto.getLastlyUsed())
+                .build();
+    }
+
+    public static StockRaceDto toDto(StockRace entity) {
+        StockRaceDto dto = new StockRaceDto();
+
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setDescription(entity.getDescription());
+        dto.setActive(entity.getActive());
+        dto.setAccentColor(entity.getAccentColor());
+        dto.setTextColor(entity.getTextColor());
+        dto.setBgBadgeColor(entity.getBgBadgeColor());
+        dto.setBarAlpha(entity.getBarAlpha());
+        dto.setGlowSize(entity.getGlowSize());
+        dto.setBarColors(entity.getBarColors());
+        dto.setBaseFontSize(entity.getBaseFontSize());
+        dto.setLabelFontSize(entity.getLabelFontSize());
+        dto.setValueFontSize(entity.getValueFontSize());
+        dto.setClockFontSize(entity.getClockFontSize());
+        dto.setBarHeight(entity.getBarHeight());
+        dto.setTopN(entity.getTopN());
+        dto.setXLimitMultiplier(entity.getXLimitMultiplier());
         dto.setLastlyUsed(entity.getLastlyUsed());
 
         return dto;

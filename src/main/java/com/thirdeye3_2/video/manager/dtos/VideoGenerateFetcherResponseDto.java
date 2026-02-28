@@ -21,5 +21,6 @@ public class VideoGenerateFetcherResponseDto {
     private HeaderDto headerDto;
     private NewsImageDto newsImageDto;
     private NewsTextSoundDto newsTextSoundDto;
+    private StockRaceDto stockRaceDto;
     private LocalDateTime currentTime;
 }
