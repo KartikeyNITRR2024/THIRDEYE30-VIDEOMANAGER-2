@@ -19,6 +19,7 @@ import com.thirdeye3_2.video.manager.services.AudioGenerateService;
 import com.thirdeye3_2.video.manager.services.NewsService;
 import com.thirdeye3_2.video.manager.services.PropertyService;
 import com.thirdeye3_2.video.manager.utils.Mapper;
+import com.thirdeye3_2.video.manager.exceptions.ResourceNotFoundException;
 
 @Service
 @Slf4j
@@ -55,7 +56,7 @@ public class NewsServiceImpl implements NewsService {
         News entity = repository.findById(id)
                 .orElseThrow(() -> {
                     log.error("News not found with id: {}", id);
-                    return new RuntimeException("News not found");
+                    return new ResourceNotFoundException("News not found");
                 });
 
         return Mapper.toDto(entity, audioGenerateService.getByTableAndForeignKey(TableName.NEWS, id).getContent());
@@ -78,7 +79,7 @@ public class NewsServiceImpl implements NewsService {
         News entity = repository.findById(id)
                 .orElseThrow(() -> {
                     log.error("News not found for update: {}", id);
-                    return new RuntimeException("News not found");
+                    return new ResourceNotFoundException("News not found");
                 });
 
         entity.setHeader(dto.getHeader());
@@ -105,7 +106,7 @@ public class NewsServiceImpl implements NewsService {
         News entity = repository.findById(uuid)
                 .orElseThrow(() -> {
                     log.error("News not found for update: {}", uuid);
-                    return new RuntimeException("News not found");
+                    return new ResourceNotFoundException("News not found");
                 });
         
         entity.setImageMultiMediaKey(key);
@@ -127,7 +128,7 @@ public class NewsServiceImpl implements NewsService {
         News entity = repository.findById(uuid)
                 .orElseThrow(() -> {
                     log.error("News not found for update: {}", uuid);
-                    return new RuntimeException("News not found");
+                    return new ResourceNotFoundException("News not found");
                 });
         
         entity.setAudioMultiMediaKey(key);

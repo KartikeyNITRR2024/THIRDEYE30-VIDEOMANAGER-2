@@ -565,3 +565,452 @@ truncate table STOCK_RACE [90106-224]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-03-01 00:17:50.959382+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]OUTRO_VIDEOS OUTRO_VIDEOS"; SQL statement:
+OUTRO_VIDEOS OUTRO_VIDEOS [42000-224]
+2026-03-01 00:17:53.076700+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]OUTRO_VIDEOS OUTRO_VIDEOS"; SQL statement:
+OUTRO_VIDEOS OUTRO_VIDEOS [42000-224]
+2026-03-01 00:20:06.209549+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant ; SQL statement:
+INSERT INTO "PUBLIC"."CONTENT_GENERATORS"("ID","ACTIVE","DESCRIPTION","IS_RUNNING","LASTLY_COMPLETED","LASTLY_STARTED","GENERATOR_TYPE","URL")VALUES(?,?,?,?,?,?,?,?) [22007-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:88)
+	at org.h2.value.Value.convertToTimestamp(Value.java:2001)
+	at org.h2.value.Value.convertTo(Value.java:1174)
+	at org.h2.value.Value.convertForAssignTo(Value.java:1113)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:369)
+	at org.h2.table.Table.convertInsertRow(Table.java:936)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:167)
+	at org.h2.command.dml.Insert.update(Insert.java:135)
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:256)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:216)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:174)
+	at org.h2.result.UpdatableRow.insertRow(UpdatableRow.java:334)
+	at org.h2.jdbc.JdbcResultSet.insertRow(JdbcResultSet.java:3335)
+	at org.h2.server.web.WebApp.editResult(WebApp.java:1165)
+	at org.h2.server.web.WebApp.process(WebApp.java:251)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at com.thirdeye3_2.video.manager.filters.ApiKeyFilter.doFilterInternal(ApiKeyFilter.java:43)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.StringIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions$1.apply(Preconditions.java:55)
+	at java.base/jdk.internal.util.Preconditions$1.apply(Preconditions.java:52)
+	at java.base/jdk.internal.util.Preconditions$4.apply(Preconditions.java:213)
+	at java.base/jdk.internal.util.Preconditions$4.apply(Preconditions.java:210)
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:98)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:106)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:302)
+	at java.base/java.lang.String.checkIndex(String.java:4832)
+	at java.base/java.lang.StringLatin1.charAt(StringLatin1.java:46)
+	at java.base/java.lang.String.charAt(String.java:1555)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:166)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:338)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:86)
+	... 58 more
+2026-03-01 00:20:06.221266+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant ; SQL statement:
+INSERT INTO "PUBLIC"."CONTENT_GENERATORS"("ID","ACTIVE","DESCRIPTION","IS_RUNNING","LASTLY_COMPLETED","LASTLY_STARTED","GENERATOR_TYPE","URL")VALUES(?,?,?,?,?,?,?,?) [22007-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:88)
+	at org.h2.value.Value.convertToTimestamp(Value.java:2001)
+	at org.h2.value.Value.convertTo(Value.java:1174)
+	at org.h2.value.Value.convertForAssignTo(Value.java:1113)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:369)
+	at org.h2.table.Table.convertInsertRow(Table.java:936)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:167)
+	at org.h2.command.dml.Insert.update(Insert.java:135)
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:256)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:216)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:174)
+	at org.h2.result.UpdatableRow.insertRow(UpdatableRow.java:334)
+	at org.h2.jdbc.JdbcResultSet.insertRow(JdbcResultSet.java:3335)
+	at org.h2.server.web.WebApp.editResult(WebApp.java:1165)
+	at org.h2.server.web.WebApp.process(WebApp.java:251)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at com.thirdeye3_2.video.manager.filters.ApiKeyFilter.doFilterInternal(ApiKeyFilter.java:43)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.StringIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions$1.apply(Preconditions.java:55)
+	at java.base/jdk.internal.util.Preconditions$1.apply(Preconditions.java:52)
+	at java.base/jdk.internal.util.Preconditions$4.apply(Preconditions.java:213)
+	at java.base/jdk.internal.util.Preconditions$4.apply(Preconditions.java:210)
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:98)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:106)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:302)
+	at java.base/java.lang.String.checkIndex(String.java:4832)
+	at java.base/java.lang.StringLatin1.charAt(StringLatin1.java:46)
+	at java.base/java.lang.String.charAt(String.java:1555)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:166)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:338)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:86)
+	... 58 more
+2026-03-01 00:22:29.098778+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function "GEN_RANDOM_UUID" not found; SQL statement:
+INSERT INTO content_generators (
+    id, 
+    generator_type, 
+    description, 
+    active, 
+    url, 
+    is_running, 
+    lastly_started, 
+    lastly_completed
+) VALUES (
+    gen_random_uuid(),  
+    'STOCK_DATA_GENERATOR',  
+    'Automatically fetches and processes real-time stock market data.',
+    true,    
+    'https://www.kaggle.com/code/kartikeythawait01/stock-data-collector-3-0/edit',
+    false,   
+    NULL, 
+    NULL
+) [90022-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.readFunction(Parser.java:3786)
+	at org.h2.command.Parser.readTermWithIdentifier(Parser.java:5148)
+	at org.h2.command.Parser.readTerm(Parser.java:4834)
+	at org.h2.command.Parser.readFactor(Parser.java:3337)
+	at org.h2.command.Parser.readSum(Parser.java:3324)
+	at org.h2.command.Parser.readConcat(Parser.java:3289)
+	at org.h2.command.Parser.readCondition(Parser.java:3079)
+	at org.h2.command.Parser.readExpression(Parser.java:2999)
+	at org.h2.command.Parser.readExpressionOrDefault(Parser.java:2985)
+	at org.h2.command.Parser.parseValuesForCommand(Parser.java:1704)
+	at org.h2.command.Parser.parseInsert(Parser.java:1569)
+	at org.h2.command.Parser.parsePrepared(Parser.java:719)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp.query(WebApp.java:1119)
+	at org.h2.server.web.WebApp.process(WebApp.java:245)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at com.thirdeye3_2.video.manager.filters.ApiKeyFilter.doFilterInternal(ApiKeyFilter.java:43)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-03-01 00:23:12.880242+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO content_generators (\000d\000a    id, \000d\000a    generator_type, \000d\000a    description, \000d\000a    active, \000d\000a    url, \000d\000a    is_running, \000d\000a    lastly_started, \000d\000a    lastly_completed\000d\000a) VALUES (\000d\000a    [*]16efcd44-ba84-478d-a4ac-e90af3b8f3a6,  \000d\000a    'STOCK_DATA_GENERATOR',  \000d\000a    'Automatically fetches and processes real-time stock market data.',\000d\000a    true,    \000d\000a    'https://www.kaggle.com/code/kartikeythawait01/stock-data-collector-3-0/edit',\000d\000a    false,   \000d\000a    NULL, \000d\000a    NULL\000d\000a)"; expected "Approximate numeric"; SQL statement:
+INSERT INTO content_generators (
+    id, 
+    generator_type, 
+    description, 
+    active, 
+    url, 
+    is_running, 
+    lastly_started, 
+    lastly_completed
+) VALUES (
+    16efcd44-ba84-478d-a4ac-e90af3b8f3a6,  
+    'STOCK_DATA_GENERATOR',  
+    'Automatically fetches and processes real-time stock market data.',
+    true,    
+    'https://www.kaggle.com/code/kartikeythawait01/stock-data-collector-3-0/edit',
+    false,   
+    NULL, 
+    NULL
+) [42001-224]
+2026-03-01 00:26:00.839723+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'16efcd44-ba84-478d-a4ac-e90af3b8fsa6' (CONTENT_GENERATORS: ""ID"" UUID NOT NULL)"; SQL statement:
+INSERT INTO content_generators (
+    id, 
+    generator_type, 
+    description, 
+    active, 
+    url, 
+    is_running, 
+    lastly_started, 
+    lastly_completed
+) VALUES (
+    '16efcd44-ba84-478d-a4ac-e90af3b8fsa6',  
+    'VIDEO_GENERATOR',  
+    'Automatically generates videos.',
+    true,    
+    'https://www.kaggle.com/code/kartikeythawait01/video-generator-2-0/edit',
+    false,   
+    NULL, 
+    NULL
+) [22018-224]
+2026-03-01 00:26:20.048357+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'16efcd44-ba84-478d-a4ac-e90af3b8fsa6' (CONTENT_GENERATORS: ""ID"" UUID NOT NULL)"; SQL statement:
+INSERT INTO content_generators (
+    id, 
+    generator_type, 
+    description, 
+    active, 
+    url, 
+    is_running, 
+    lastly_started, 
+    lastly_completed
+) VALUES (
+    '16efcd44-ba84-478d-a4ac-e90af3b8fsa6',  
+    'VIDEO_GENERATOR',  
+    'Automatically generates videos.',
+    true,    
+    'https://www.kaggle.com/code/kartikeythawait01/video-generator-2-0/edit',
+    false,   
+    NULL, 
+    NULL
+) [22018-224]
+2026-03-01 00:27:10.287714+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'16efcd44-ba84-478d-a4ac-e90af3b8f5z6' (CONTENT_GENERATORS: ""ID"" UUID NOT NULL)"; SQL statement:
+INSERT INTO content_generators (
+    id, 
+    generator_type, 
+    description, 
+    active, 
+    url, 
+    is_running, 
+    lastly_started, 
+    lastly_completed
+) VALUES (
+    '16efcd44-ba84-478d-a4ac-e90af3b8f5z6',  
+    'VIDEO_GENERATOR',  
+    'Automatically generates videos.',
+    true,    
+    'https://www.kaggle.com/code/kartikeythawait01/video-generator-2-0/edit',
+    false,   
+    NULL, 
+    NULL
+) [22018-224]
+2026-03-01 00:27:32.995092+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'16efcd44-ba84-478d-a4ac-e90af3b8f3z6' (CONTENT_GENERATORS: ""ID"" UUID NOT NULL)"; SQL statement:
+INSERT INTO content_generators (
+    id, 
+    generator_type, 
+    description, 
+    active, 
+    url, 
+    is_running, 
+    lastly_started, 
+    lastly_completed
+) VALUES (
+    '16efcd44-ba84-478d-a4ac-e90af3b8f3z6',  
+    'VIDEO_GENERATOR',  
+    'Automatically generates videos.',
+    true,    
+    'https://www.kaggle.com/code/kartikeythawait01/video-generator-2-0/edit',
+    false,   
+    NULL, 
+    NULL
+) [22018-224]
+2026-03-01 00:27:51.541609+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'16efcd44-ba84-478d-a4ac-e90af3b8f3z8' (CONTENT_GENERATORS: ""ID"" UUID NOT NULL)"; SQL statement:
+INSERT INTO content_generators (
+    id, 
+    generator_type, 
+    description, 
+    active, 
+    url, 
+    is_running, 
+    lastly_started, 
+    lastly_completed
+) VALUES (
+    '16efcd44-ba84-478d-a4ac-e90af3b8f3z8',  
+    'VIDEO_GENERATOR',  
+    'Automatically generates videos.',
+    true,    
+    'https://www.kaggle.com/code/kartikeythawait01/video-generator-2-0/edit',
+    false,   
+    NULL, 
+    NULL
+) [22018-224]
+2026-03-01 00:28:44.672702+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CONTENT_GENERATORS \000d\000aINSERT [*]INTO content_generators (\000d\000a    id, \000d\000a    generator_type, \000d\000a    description, \000d\000a    active, \000d\000a    url, \000d\000a    is_running, \000d\000a    lastly_started, \000d\000a    lastly_completed\000d\000a) VALUES (\000d\000a    '16efcd44-ba84-478d-a4ac-e90af3b8f3a7',  \000d\000a    'VIDEO_GENERATOR',  \000d\000a    'Automatically generates videos.',\000d\000a    true,    \000d\000a    'https://www.kaggle.com/code/kartikeythawait01/video-generator-2-0/edit',\000d\000a    false,   \000d\000a    NULL, \000d\000a    NULL\000d\000a)"; SQL statement:
+SELECT * FROM CONTENT_GENERATORS 
+INSERT INTO content_generators (
+    id, 
+    generator_type, 
+    description, 
+    active, 
+    url, 
+    is_running, 
+    lastly_started, 
+    lastly_completed
+) VALUES (
+    '16efcd44-ba84-478d-a4ac-e90af3b8f3a7',  
+    'VIDEO_GENERATOR',  
+    'Automatically generates videos.',
+    true,    
+    'https://www.kaggle.com/code/kartikeythawait01/video-generator-2-0/edit',
+    false,   
+    NULL, 
+    NULL
+) [42000-224]
+2026-03-01 00:30:06.811344+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CONTENT_GENERATORS \000d\000aINSERT [*]INTO content_generators (\000d\000a    id, \000d\000a    generator_type, \000d\000a    description, \000d\000a    active, \000d\000a    url, \000d\000a    is_running, \000d\000a    lastly_started, \000d\000a    lastly_completed\000d\000a) VALUES (\000d\000a    '16efcd44-ba84-478d-a4ac-e90af3b8f3a8',  \000d\000a    'AUDIO_GENERATOR',  \000d\000a    'Automatically generates audios.',\000d\000a    true,    \000d\000a    'https://www.kaggle.com/code/kartikeythawait01/audio-generater/edit',\000d\000a    false,   \000d\000a    NULL, \000d\000a    NULL\000d\000a)"; SQL statement:
+SELECT * FROM CONTENT_GENERATORS 
+INSERT INTO content_generators (
+    id, 
+    generator_type, 
+    description, 
+    active, 
+    url, 
+    is_running, 
+    lastly_started, 
+    lastly_completed
+) VALUES (
+    '16efcd44-ba84-478d-a4ac-e90af3b8f3a8',  
+    'AUDIO_GENERATOR',  
+    'Automatically generates audios.',
+    true,    
+    'https://www.kaggle.com/code/kartikeythawait01/audio-generater/edit',
+    false,   
+    NULL, 
+    NULL
+) [42000-224]
+2026-03-01 00:30:18.309809+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CONTENT_GENERATORS \000d\000aINSERT [*]INTO content_generators (\000d\000a    id, \000d\000a    generator_type, \000d\000a    description, \000d\000a    active, \000d\000a    url, \000d\000a    is_running, \000d\000a    lastly_started, \000d\000a    lastly_completed\000d\000a) VALUES (\000d\000a    '16efcd44-ba84-478d-a4ac-e90af3b8f3a9',  \000d\000a    'AUDIO_GENERATOR',  \000d\000a    'Automatically generates audios.',\000d\000a    true,    \000d\000a    'https://www.kaggle.com/code/kartikeythawait01/audio-generater/edit',\000d\000a    false,   \000d\000a    NULL, \000d\000a    NULL\000d\000a)"; SQL statement:
+SELECT * FROM CONTENT_GENERATORS 
+INSERT INTO content_generators (
+    id, 
+    generator_type, 
+    description, 
+    active, 
+    url, 
+    is_running, 
+    lastly_started, 
+    lastly_completed
+) VALUES (
+    '16efcd44-ba84-478d-a4ac-e90af3b8f3a9',  
+    'AUDIO_GENERATOR',  
+    'Automatically generates audios.',
+    true,    
+    'https://www.kaggle.com/code/kartikeythawait01/audio-generater/edit',
+    false,   
+    NULL, 
+    NULL
+) [42000-224]

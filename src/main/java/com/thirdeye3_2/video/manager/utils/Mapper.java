@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.thirdeye3_2.video.manager.dtos.AudioGenerateDto;
+import com.thirdeye3_2.video.manager.dtos.ContentGeneratorDto;
 import com.thirdeye3_2.video.manager.dtos.ContentVideoDto;
 import com.thirdeye3_2.video.manager.dtos.CurrentVideoDto;
 import com.thirdeye3_2.video.manager.dtos.HeaderDto;
@@ -19,6 +20,7 @@ import com.thirdeye3_2.video.manager.dtos.VideoDetailsDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDto;
 import com.thirdeye3_2.video.manager.dtos.VideoSettingDto;
 import com.thirdeye3_2.video.manager.entities.AudioGenerate;
+import com.thirdeye3_2.video.manager.entities.ContentGenerator;
 import com.thirdeye3_2.video.manager.entities.ContentVideo;
 import com.thirdeye3_2.video.manager.entities.CurrentVideo;
 import com.thirdeye3_2.video.manager.entities.Header;
@@ -647,4 +649,32 @@ public class Mapper {
 
         return dto;
     }
+    
+    public static ContentGenerator toEntity(ContentGeneratorDto dto) {
+        ContentGenerator entity = new ContentGenerator();
+        entity.setId(dto.getId());
+        entity.setType(dto.getType());
+        entity.setDescription(dto.getDescription());
+        entity.setActive(dto.getActive());
+        entity.setUrl(dto.getUrl());
+        entity.setIsRunning(dto.getIsRunning());
+        entity.setLastlyStarted(dto.getLastlyStarted());
+        entity.setLastlyCompleted(dto.getLastlyCompleted());
+        return entity;
+    }
+    
+    public static ContentGeneratorDto toDto(ContentGenerator entity) {
+        ContentGeneratorDto dto = new ContentGeneratorDto();
+        dto.setId(entity.getId());
+        dto.setType(entity.getType());
+        dto.setDescription(entity.getDescription());
+        dto.setActive(entity.getActive());
+        dto.setUrl(entity.getUrl());
+        dto.setIsRunning(entity.getIsRunning());
+        dto.setLastlyStarted(entity.getLastlyStarted());
+        dto.setLastlyCompleted(entity.getLastlyCompleted());
+        return dto;
+    }
+    
+    
 }
