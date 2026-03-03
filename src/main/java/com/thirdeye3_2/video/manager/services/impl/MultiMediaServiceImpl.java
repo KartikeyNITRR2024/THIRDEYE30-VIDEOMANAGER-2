@@ -267,7 +267,7 @@ public class MultiMediaServiceImpl implements MultiMediaService {
 
 	    log.info("Fetching all multimedia details");
 
-	    List<MultiMedia> entities = multiMediaRepository.findAll();
+	    List<MultiMedia> entities = multiMediaRepository.findAllByOrderByTimeOfUploadDesc();
 
 	    return entities.stream()
 	            .map(entity -> {
@@ -303,7 +303,7 @@ public class MultiMediaServiceImpl implements MultiMediaService {
 	    LocalDateTime endOfDay = startOfDay.plusDays(1);
 
 	    List<MultiMedia> entities =
-	            multiMediaRepository.findByTimeOfUploadBetween(startOfDay, endOfDay);
+	            multiMediaRepository.findByTimeOfUploadBetweenOrderByTimeOfUploadDesc(startOfDay, endOfDay);
 
 	    return entities.stream()
 	            .map(entity -> {

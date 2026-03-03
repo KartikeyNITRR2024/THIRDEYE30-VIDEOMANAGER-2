@@ -68,7 +68,7 @@ public class AudioGenerateServiceImpl implements AudioGenerateService {
     public List<AudioGenerateDto> getAll() {
         log.info("Fetching all AudioGenerate records");
 
-        return repository.findAll()
+        return repository.findAllByOrderByCreatedTimeDesc()
                 .stream()
                 .map(Mapper::toDto)
                 .collect(Collectors.toList());

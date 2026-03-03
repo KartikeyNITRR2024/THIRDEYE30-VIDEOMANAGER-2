@@ -14,6 +14,7 @@ import com.thirdeye3_2.video.manager.entities.News;
 public interface NewsRepository extends JpaRepository<News, UUID> {
 
     List<News> findByVideoDetailsId(UUID videoDetailsId);
+    List<News> findAllByOrderByCreatedTimeDesc();
     
     @Modifying
     @Transactional

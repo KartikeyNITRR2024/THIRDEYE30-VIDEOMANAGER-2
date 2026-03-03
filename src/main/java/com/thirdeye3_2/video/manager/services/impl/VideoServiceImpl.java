@@ -54,7 +54,7 @@ public class VideoServiceImpl implements VideoService {
     public List<VideoDto> getAll() {
         log.info("Fetching all videos");
 
-        List<VideoDto> list = videoRepository.findAll()
+        List<VideoDto> list = videoRepository.findAllByOrderByCreatedDateTimeDesc()
                 .stream()
                 .map(Mapper::toDto)
                 .collect(Collectors.toList());

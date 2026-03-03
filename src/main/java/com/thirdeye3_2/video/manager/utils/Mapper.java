@@ -82,6 +82,7 @@ public class Mapper {
                 .outroSubHeader(dto.getOutroSubHeader())
                 .isbarGraphJsonMultiMediaKeyUploaded(dto.getIsbarGraphJsonMultiMediaKeyUploaded())
                 .barGraphJsonMultiMediaKey(dto.getBarGraphJsonMultiMediaKey())
+                .createdTime(dto.getCreatedTime())
                 .build();
     }
 
@@ -96,6 +97,7 @@ public class Mapper {
         dto.setOutroSubHeader(entity.getOutroSubHeader());
         dto.setIsbarGraphJsonMultiMediaKeyUploaded(entity.getIsbarGraphJsonMultiMediaKeyUploaded());
         dto.setBarGraphJsonMultiMediaKey(entity.getBarGraphJsonMultiMediaKey());
+        dto.setCreatedTime(entity.getCreatedTime());
         return dto;
     }
     

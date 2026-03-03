@@ -1,5 +1,6 @@
 package com.thirdeye3_2.video.manager.services.impl;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -33,9 +34,10 @@ public class VideoDetailsServiceImpl implements VideoDetailsService {
     public VideoDetailsDto create(VideoDetailsDto dto) {
     	dto.setVideoId(currentVideoService.getCurrentVideo().getVideoId());
         log.info("Creating VideoDetails for videoId={}", dto.getVideoId());
-
+        VideoDetails videoDetails = Mapper.toEntity(dto);
+        videoDetails.setCreatedTime(LocalDateTime.now());
         VideoDetails saved =
-                repository.save(Mapper.toEntity(dto));
+                repository.save(videoDetails);
 
         log.info("VideoDetails created successfully | id={}", saved.getId());
 
@@ -60,7 +62,7 @@ public class VideoDetailsServiceImpl implements VideoDetailsService {
         log.info("Fetching all VideoDetails");
 
         List<VideoDetailsDto> list =
-                repository.findAll()
+                repository.findAllByOrderByCreatedTimeDesc()
                         .stream()
                         .map(Mapper::toDto)
                         .collect(Collectors.toList());

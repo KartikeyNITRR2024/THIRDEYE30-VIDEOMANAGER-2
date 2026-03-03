@@ -5,7 +5,9 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.MediaType;
+import com.thirdeye3_2.video.manager.dtos.NewsCsvDto;
 import com.thirdeye3_2.video.manager.dtos.NewsDto;
 import com.thirdeye3_2.video.manager.dtos.Response;
 import com.thirdeye3_2.video.manager.services.NewsService;
@@ -50,5 +52,12 @@ public class NewsController {
 
         return new Response<>(true, 0, null,
                 service.getByVideoDetailsId(videoDetailsId));
+    }
+    
+    @PostMapping(value = "/upload-csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public Response<String> uploadCsv(@ModelAttribute NewsCsvDto csvDto) {
+        service.uploadCsv(csvDto);
+        return new Response<>(true, 0, null,
+                "Csv uploaded successfully");
     }
 }

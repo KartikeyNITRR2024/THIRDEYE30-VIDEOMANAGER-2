@@ -1,5 +1,6 @@
 package com.thirdeye3_2.video.manager.dtos;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.Data;
 
@@ -14,4 +15,5 @@ public class VideoDetailsDto {
     private String outroSubHeader;
     private Boolean isbarGraphJsonMultiMediaKeyUploaded;
     private UUID barGraphJsonMultiMediaKey;
+    private LocalDateTime createdTime;
 }

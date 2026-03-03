@@ -29,4 +29,6 @@ public interface AudioGenerateRepository
            """)
     int deleteOldAutoDeletable(
             @Param("threshold") LocalDateTime threshold);
+    
+    List<AudioGenerate> findAllByOrderByCreatedTimeDesc();
 }

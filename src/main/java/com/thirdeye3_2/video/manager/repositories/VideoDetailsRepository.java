@@ -7,4 +7,5 @@ import com.thirdeye3_2.video.manager.entities.VideoDetails;
 
 public interface VideoDetailsRepository extends JpaRepository<VideoDetails, UUID> {
 	 List<VideoDetails> findAllByVideoId(UUID videoId);
+	 List<VideoDetails> findAllByOrderByCreatedTimeDesc();
 }

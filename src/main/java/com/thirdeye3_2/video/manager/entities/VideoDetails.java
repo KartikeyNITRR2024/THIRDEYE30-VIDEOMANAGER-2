@@ -1,5 +1,6 @@
 package com.thirdeye3_2.video.manager.entities;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import jakarta.persistence.*;
@@ -42,4 +43,7 @@ public class VideoDetails {
     
     @Column(name = "bar_graph_json_multimedia_key")
     private UUID barGraphJsonMultiMediaKey;
+    
+    @Column(name = "created_time", nullable = false)
+    private LocalDateTime createdTime;
 }

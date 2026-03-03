@@ -7,10 +7,12 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.extern.slf4j.Slf4j;
 
 import com.thirdeye3_2.video.manager.dtos.AudioGenerateDto;
+import com.thirdeye3_2.video.manager.dtos.NewsCsvDto;
 import com.thirdeye3_2.video.manager.dtos.NewsDto;
 import com.thirdeye3_2.video.manager.entities.News;
 import com.thirdeye3_2.video.manager.enums.TableName;
@@ -19,6 +21,7 @@ import com.thirdeye3_2.video.manager.services.AudioGenerateService;
 import com.thirdeye3_2.video.manager.services.NewsService;
 import com.thirdeye3_2.video.manager.services.PropertyService;
 import com.thirdeye3_2.video.manager.utils.Mapper;
+import com.thirdeye3_2.video.manager.exceptions.CorruptedMultiMediaException;
 import com.thirdeye3_2.video.manager.exceptions.ResourceNotFoundException;
 
 @Service
@@ -66,7 +69,7 @@ public class NewsServiceImpl implements NewsService {
     public List<NewsDto> getAll() {
         log.info("Fetching all news records");
 
-        return repository.findAll()
+        return repository.findAllByOrderByCreatedTimeDesc()
                 .stream()
                 .map(entity -> Mapper.toDto(entity, audioGenerateService.getByTableAndForeignKey(TableName.NEWS, entity.getId()).getContent()))
                 .collect(Collectors.toList());
@@ -171,5 +174,52 @@ public class NewsServiceImpl implements NewsService {
 
         log.info("Deleted {} old auto-deletable news records",
                 deletedCount);
+    }
+    
+    @Override
+    @org.springframework.transaction.annotation.Transactional // Ensures all rows save or none do
+    public void uploadCsv(NewsCsvDto csvDto) {
+        log.info("Starting CSV upload for videoDetailsId: {}", csvDto.getVideoDetailsId());
+        
+        if (csvDto.getFile() == null || csvDto.getFile().isEmpty()) {
+            throw new CorruptedMultiMediaException("File must not be empty");
+        }
+        
+        if (csvDto.getVideoDetailsId() == null) {
+            throw new CorruptedMultiMediaException("videoDetailsId must be provided");
+        }
+
+        MultipartFile file = csvDto.getFile();
+        try (java.io.BufferedReader reader = new java.io.BufferedReader(
+                new java.io.InputStreamReader(file.getInputStream(), java.nio.charset.StandardCharsets.UTF_8))) {
+            
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.trim().isEmpty()) continue;
+                String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                if (data.length < 5) {
+                    log.warn("Skipping malformed row (insufficient columns): {}", line);
+                    continue;
+                }
+                NewsDto dto = NewsDto.builder()
+                        .videoDetailsId(csvDto.getVideoDetailsId())
+                        .header(clean(data[0]))
+                        .content(clean(data[1]))
+                        .audioContent(clean(data[2]))
+                        .newsWarningColor(clean(data[3]))
+                        .autoDelete(Boolean.parseBoolean(clean(data[4])))
+                        .isAudioMultiMediaKeyUploaded(Boolean.FALSE)
+                        .isImageMultiMediaKeyUploaded(Boolean.FALSE)
+                        .build();
+                this.create(dto);
+            }
+        } catch (Exception ex) {
+            log.error("Failed to process CSV: {}", ex.getMessage());
+            throw new CorruptedMultiMediaException("Invalid CSV file format or content: " + ex.getMessage());
+        }
+    }
+
+    private String clean(String input) {
+        return (input == null) ? "" : input.replace("\"", "").trim();
     }
 }
