@@ -185,11 +185,11 @@ public class GeneratorServiceImpl implements GeneratorService {
 				 List<NewsDto> finalList = new ArrayList();
 				 for(NewsDto newsDto : newsDtos)
 				 {
-					 if(contentVideoDto.getIsNewsImage() && newsDto.getIsImageMultiMediaKeyUploaded() && newsDto.getIsImageMultiMediaKeyUploaded())
+					 if(contentVideoDto.getIsNewsImage() && newsDto.getIsImageMultiMediaKeyUploaded() && newsDto.getIsAudioMultiMediaKeyUploaded())
 					 {
 						 finalList.add(newsDto);
 					 }
-					 else if(contentVideoDto.getIsNewsText() && newsDto.getIsImageMultiMediaKeyUploaded())
+					 else if(contentVideoDto.getIsNewsText() && newsDto.getIsAudioMultiMediaKeyUploaded())
 					 {
 						 finalList.add(newsDto);
 					 }
