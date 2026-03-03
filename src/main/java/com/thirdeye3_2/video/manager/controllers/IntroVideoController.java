@@ -25,6 +25,7 @@ public class IntroVideoController {
     @PutMapping("/{id}")
     public Response<IntroVideoDto> update(@PathVariable UUID id,
                                           @RequestBody IntroVideoDto dto) {
+    	System.out.println(dto);
         return new Response<>(true, 0, null, service.update(id, dto));
     }
 

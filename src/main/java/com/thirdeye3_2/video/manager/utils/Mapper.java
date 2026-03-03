@@ -295,7 +295,7 @@ public class Mapper {
                 .adImageWidth(dto.getAdImageWidth())
                 .audioMultiMediaKey(dto.getAudioMultiMediaKey())
                 .audioVolumne(dto.getAudioVolumne())
-                .lastlyUsed(dto.getLastlyUsed())
+                .isAudio(dto.getIsAudio())
                 .lastlyUsed(dto.getLastlyUsed())
                 .build();
     }

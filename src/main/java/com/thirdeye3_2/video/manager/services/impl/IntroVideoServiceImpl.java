@@ -44,7 +44,7 @@ public class IntroVideoServiceImpl implements IntroVideoService {
 
         dto.setId(existing.getId());
         IntroVideo updated = Mapper.toEntity(dto);
-
+        System.out.println(updated);
         return Mapper.toDto(repository.save(updated));
     }
 
