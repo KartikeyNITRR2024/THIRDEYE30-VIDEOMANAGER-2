@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface MultiMediaRepository extends JpaRepository<MultiMedia, UUID> {
 	List<MultiMedia> findByAutoDeleteTrueAndLastUsedBefore(LocalDateTime time);
+	List<MultiMedia> findByTimeOfUploadBetween(LocalDateTime start, LocalDateTime end);
 }

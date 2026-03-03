@@ -258,8 +258,76 @@ public class MultiMediaServiceImpl implements MultiMediaService {
 
 	    } catch (Exception e) {
 	        log.error("Failed to delete multimedia | key={}", key, e);
-	        throw new RuntimeException("Failed to delete multimedia");
+	        throw new ResourceNotFoundException("Failed to delete multimedia");
 	    }
+	}
+
+	@Override
+	public List<MultiMediaResponseDto> getAllMutliMediaDetails() {
+
+	    log.info("Fetching all multimedia details");
+
+	    List<MultiMedia> entities = multiMediaRepository.findAll();
+
+	    return entities.stream()
+	            .map(entity -> {
+
+	                String viewUrl = UriComponentsBuilder.fromHttpUrl(urlStarter)
+	                        .pathSegment("vm2", "multimedia", "view", entity.getKey().toString())
+	                        .build()
+	                        .toUriString();
+
+	                return MultiMediaResponseDto.builder()
+	                        .key(entity.getKey().toString())
+	                        .folder1(entity.getFolder1())
+	                        .folder2(entity.getFolder2())
+	                        .name(entity.getName() + entity.getExtension())
+	                        .description(entity.getDescription())
+	                        .url(viewUrl)
+	                        .size(entity.getSize())
+	                        .multiMediaType(entity.getMultiMediaType())
+	                        .timeOfUpload(entity.getTimeOfUpload())
+	                        .lastUsed(entity.getLastUsed())
+	                        .autoDelete(entity.getAutoDelete())
+	                        .build();
+	            })
+	            .toList();
+	}
+
+	@Override
+	public List<MultiMediaResponseDto> getAllMutliMediaUploadToday() {
+
+	    log.info("Fetching today's uploaded multimedia");
+
+	    LocalDateTime startOfDay = LocalDateTime.now().toLocalDate().atStartOfDay();
+	    LocalDateTime endOfDay = startOfDay.plusDays(1);
+
+	    List<MultiMedia> entities =
+	            multiMediaRepository.findByTimeOfUploadBetween(startOfDay, endOfDay);
+
+	    return entities.stream()
+	            .map(entity -> {
+
+	                String viewUrl = UriComponentsBuilder.fromHttpUrl(urlStarter)
+	                        .pathSegment("vm2", "multimedia", "view", entity.getKey().toString())
+	                        .build()
+	                        .toUriString();
+
+	                return MultiMediaResponseDto.builder()
+	                        .key(entity.getKey().toString())
+	                        .folder1(entity.getFolder1())
+	                        .folder2(entity.getFolder2())
+	                        .name(entity.getName() + entity.getExtension())
+	                        .description(entity.getDescription())
+	                        .url(viewUrl)
+	                        .size(entity.getSize())
+	                        .multiMediaType(entity.getMultiMediaType())
+	                        .timeOfUpload(entity.getTimeOfUpload())
+	                        .lastUsed(entity.getLastUsed())
+	                        .autoDelete(entity.getAutoDelete())
+	                        .build();
+	            })
+	            .toList();
 	}
 
 }

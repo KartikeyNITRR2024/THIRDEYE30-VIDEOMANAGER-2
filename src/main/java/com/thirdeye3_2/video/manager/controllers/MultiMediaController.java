@@ -1,7 +1,7 @@
 package com.thirdeye3_2.video.manager.controllers;
 
 import java.util.UUID;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -49,6 +49,16 @@ public class MultiMediaController {
 	@GetMapping("/info/{key}")
     public Response<MultiMediaResponseDto> getFileInfo(@PathVariable("key") UUID key) {
         return new Response<>(true, 0, null, multiMediaService.getMultiMediaDetails(key));
+    }
+	
+	@GetMapping()
+    public Response<List<MultiMediaResponseDto>> getAllFileInfo() {
+        return new Response<>(true, 0, null, multiMediaService.getAllMutliMediaDetails());
+    }
+	
+	@GetMapping("/today")
+    public Response<List<MultiMediaResponseDto>> getAllFileInfoUploadToday() {
+        return new Response<>(true, 0, null, multiMediaService.getAllMutliMediaUploadToday());
     }
 	
 	@DeleteMapping("/{id}")
