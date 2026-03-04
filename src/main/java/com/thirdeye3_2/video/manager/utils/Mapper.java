@@ -13,9 +13,12 @@ import com.thirdeye3_2.video.manager.dtos.NewsDto;
 import com.thirdeye3_2.video.manager.dtos.NewsImageDto;
 import com.thirdeye3_2.video.manager.dtos.NewsTextSoundDto;
 import com.thirdeye3_2.video.manager.dtos.OutroVideoDto;
+import com.thirdeye3_2.video.manager.dtos.PromptDetailDto;
+import com.thirdeye3_2.video.manager.dtos.PromptDto;
 import com.thirdeye3_2.video.manager.dtos.StockDto;
 import com.thirdeye3_2.video.manager.dtos.StockGroupDto;
 import com.thirdeye3_2.video.manager.dtos.StockRaceDto;
+import com.thirdeye3_2.video.manager.dtos.TelegramBotDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDetailsDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDto;
 import com.thirdeye3_2.video.manager.dtos.VideoSettingDto;
@@ -29,9 +32,11 @@ import com.thirdeye3_2.video.manager.entities.News;
 import com.thirdeye3_2.video.manager.entities.NewsImage;
 import com.thirdeye3_2.video.manager.entities.NewsTextSound;
 import com.thirdeye3_2.video.manager.entities.OutroVideo;
+import com.thirdeye3_2.video.manager.entities.Prompt;
 import com.thirdeye3_2.video.manager.entities.Stock;
 import com.thirdeye3_2.video.manager.entities.StockGroup;
 import com.thirdeye3_2.video.manager.entities.StockRace;
+import com.thirdeye3_2.video.manager.entities.TelegramBot;
 import com.thirdeye3_2.video.manager.entities.Video;
 import com.thirdeye3_2.video.manager.entities.VideoDetails;
 import com.thirdeye3_2.video.manager.entities.VideoSetting;
@@ -676,6 +681,62 @@ public class Mapper {
         dto.setLastlyStarted(entity.getLastlyStarted());
         dto.setLastlyCompleted(entity.getLastlyCompleted());
         return dto;
+    }
+    
+    public static TelegramBotDto toDto(TelegramBot entity) {
+        return new TelegramBotDto(
+                entity.getId(),
+                entity.getName(),
+                entity.getActive(),
+                entity.getChatId(),
+                entity.getBotToken(),
+                entity.getBotType(),
+                entity.getCreatedDateTime()
+        );
+    }
+
+    public static TelegramBot toEntity(TelegramBotDto dto) {
+        return TelegramBot.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .active(dto.getActive())
+                .chatId(dto.getChatId())
+                .botToken(dto.getBotToken())
+                .botType(dto.getBotType())
+                .createdDateTime(dto.getCreatedDateTime())
+                .build();
+    }
+    
+    public static PromptDto toDto(Prompt entity) {
+        PromptDto dto = new PromptDto();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setTypeOfVideo(entity.getTypeOfVideo());
+        dto.setLastlyUsed(entity.getLastlyUsed());
+        dto.setCreatedDateTime(entity.getCreatedDateTime());
+        return dto;
+    }
+
+    public static PromptDetailDto toDetailDto(Prompt entity) {
+        PromptDetailDto dto = new PromptDetailDto();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setPrompt(entity.getPrompt());
+        dto.setTypeOfVideo(entity.getTypeOfVideo());
+        dto.setLastlyUsed(entity.getLastlyUsed());
+        dto.setCreatedDateTime(entity.getCreatedDateTime());
+        return dto;
+    }
+
+    public static Prompt toEntity(PromptDetailDto dto) {
+        return Prompt.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .prompt(dto.getPrompt())
+                .typeOfVideo(dto.getTypeOfVideo())
+                .lastlyUsed(dto.getLastlyUsed())
+                .createdDateTime(dto.getCreatedDateTime())
+                .build();
     }
     
     

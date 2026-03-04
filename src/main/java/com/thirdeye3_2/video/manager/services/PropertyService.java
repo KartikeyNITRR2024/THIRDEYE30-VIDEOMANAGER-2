@@ -9,4 +9,6 @@ public interface PropertyService {
     void fetchProperties();
 
     Long getmaximumTimeForResourcesInDays();
+
+	Long getsendLogsAndFilesToTelegram();
 }

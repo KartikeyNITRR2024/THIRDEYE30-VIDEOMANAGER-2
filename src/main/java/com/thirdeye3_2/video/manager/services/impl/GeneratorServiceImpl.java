@@ -20,11 +20,14 @@ import com.thirdeye3_2.video.manager.dtos.NewsDto;
 import com.thirdeye3_2.video.manager.dtos.StockDto;
 import com.thirdeye3_2.video.manager.dtos.StockGroupDto;
 import com.thirdeye3_2.video.manager.dtos.StockPriceFetcherResponseDto;
+import com.thirdeye3_2.video.manager.dtos.TelegramBotDto;
+import com.thirdeye3_2.video.manager.dtos.TelegramSettingDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDetailsDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDto;
 import com.thirdeye3_2.video.manager.dtos.VideoGenerateFetcherResponseDto;
 import com.thirdeye3_2.video.manager.dtos.VideoSettingDto;
 import com.thirdeye3_2.video.manager.entities.Stock;
+import com.thirdeye3_2.video.manager.enums.BotType;
 import com.thirdeye3_2.video.manager.enums.NewsMultiMediaType;
 import com.thirdeye3_2.video.manager.exceptions.GeneratorFetchException;
 import com.thirdeye3_2.video.manager.services.AudioGenerateService;
@@ -37,8 +40,10 @@ import com.thirdeye3_2.video.manager.services.NewsImageService;
 import com.thirdeye3_2.video.manager.services.NewsService;
 import com.thirdeye3_2.video.manager.services.NewsTextSoundService;
 import com.thirdeye3_2.video.manager.services.OutroVideoService;
+import com.thirdeye3_2.video.manager.services.PropertyService;
 import com.thirdeye3_2.video.manager.services.StockGroupService;
 import com.thirdeye3_2.video.manager.services.StockRaceService;
+import com.thirdeye3_2.video.manager.services.TelegramBotService;
 import com.thirdeye3_2.video.manager.services.VideoDetailsService;
 import com.thirdeye3_2.video.manager.services.VideoService;
 import com.thirdeye3_2.video.manager.services.VideoSettingService;
@@ -90,6 +95,12 @@ public class GeneratorServiceImpl implements GeneratorService {
 	 @Autowired
 	 private StockRaceService stockRaceService;
 	 
+	 @Autowired
+	 private PropertyService propertyService;
+	 
+	 @Autowired
+	 private TelegramBotService telegramBotService;
+	 
 	 public VideoDto getCurrentVideo()
 	 {
 		 CurrentVideoDto currentVideoDto = currentVideoService.getCurrentVideo();
@@ -106,6 +117,28 @@ public class GeneratorServiceImpl implements GeneratorService {
 			 throw new GeneratorFetchException("More then one video details");
 		 }
 		 return videoDetailsDtos.get(0);
+	 }
+	 
+	 private TelegramSettingDto getTelegramSetting()
+	 {
+		 TelegramSettingDto telegramSettingDto = new TelegramSettingDto();
+		 Map<BotType, List<TelegramBotDto>> allActiveGroupedByType = telegramBotService.getAllActiveGroupedByType();
+		 if(propertyService.getsendLogsAndFilesToTelegram() == 0)
+		 {
+			 allActiveGroupedByType.put(BotType.FINAL_PRODUCT, null);
+			 allActiveGroupedByType.put(BotType.LOGS, null);
+		 }
+		 else if(propertyService.getsendLogsAndFilesToTelegram() == 1)
+		 {
+			 allActiveGroupedByType.put(BotType.FINAL_PRODUCT, null);
+		 }
+		 else if(propertyService.getsendLogsAndFilesToTelegram() == 2)
+		 {
+			 allActiveGroupedByType.put(BotType.LOGS, null);
+		 }
+		 telegramSettingDto.setBotMap(allActiveGroupedByType);
+		 telegramSettingDto.setSendLogsAndFilesToTelegram(propertyService.getsendLogsAndFilesToTelegram());
+		 return telegramSettingDto;
 	 }
 	 
 	 @Override
@@ -134,7 +167,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 				 stockCodes.add(stockCode);
 			 }
 		 }
-		 StockPriceFetcherResponseDto stockPriceFetcherResponseDto = new StockPriceFetcherResponseDto(currentVideo.getDateOfUpload(), currentVideo.getId(), stockCodes);
+		 StockPriceFetcherResponseDto stockPriceFetcherResponseDto = new StockPriceFetcherResponseDto(currentVideo.getDateOfUpload(), currentVideo.getId(), stockCodes, getTelegramSetting(), LocalDateTime.now());
 		 return stockPriceFetcherResponseDto;
 	 }
 	 
@@ -154,6 +187,8 @@ public class GeneratorServiceImpl implements GeneratorService {
 			 audioGenerateContents.add(audioGenerateContent);
 		 }
 		 audioGenerateFetcherResponseDto.setContents(audioGenerateContents);
+		 audioGenerateFetcherResponseDto.setTelegramSettingDto(getTelegramSetting());
+		 audioGenerateFetcherResponseDto.setCurrentTime(LocalDateTime.now());
 		 return audioGenerateFetcherResponseDto;
 	 }
 	 
@@ -235,6 +270,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 				 videoGenerateFetcherResponseDto.setStockRaceDto(stockRaceService.getActive());
 			 }
 		 }
+		 videoGenerateFetcherResponseDto.setTelegramSettingDto(getTelegramSetting());
 		 videoGenerateFetcherResponseDto.setCurrentTime(LocalDateTime.now());
 		 return videoGenerateFetcherResponseDto;
 	 }

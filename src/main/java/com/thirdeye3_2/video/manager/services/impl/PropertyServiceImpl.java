@@ -28,6 +28,7 @@ public class PropertyServiceImpl implements PropertyService {
 
     private Map<String, Object> properties = null;
     private Long maximumTimeForResourcesInDays = null;
+    private Long sendLogsAndFilesToTelegram = null;  // 0. No.  1. Only Logs. 2. Only Files  3. Both
 
     @Override
     public void fetchProperties() {
@@ -35,6 +36,7 @@ public class PropertyServiceImpl implements PropertyService {
         if (response.isSuccess()) {
             properties = response.getResponse();
             maximumTimeForResourcesInDays = ((Number) properties.getOrDefault("MAXIMIUM_TIME_FOR_RESOURCES_IN_DAYS", 7L)).longValue();
+            sendLogsAndFilesToTelegram = ((Number) properties.getOrDefault("SEND_LONGS_AND_FILES_TO_TELEGRAM", 3L)).longValue();
             logger.info("Request {}, maximumTimeForResourcesInDays {}",
                     properties, maximumTimeForResourcesInDays);
         } else {
@@ -51,5 +53,14 @@ public class PropertyServiceImpl implements PropertyService {
     		fetchProperties();
     	}
         return maximumTimeForResourcesInDays;
+    }
+    
+    @Override
+    public Long getsendLogsAndFilesToTelegram() {
+    	if(sendLogsAndFilesToTelegram == null)
+    	{
+    		fetchProperties();
+    	}
+        return sendLogsAndFilesToTelegram;
     }
 }

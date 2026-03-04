@@ -15,4 +15,6 @@ public class StockPriceFetcherResponseDto {
    private LocalDateTime dateOfStockPrice;
    private UUID videoUuid;
    private List<String> stockAndMarketCodes;
+   private TelegramSettingDto telegramSettingDto;
+   private LocalDateTime currentTime;
 }

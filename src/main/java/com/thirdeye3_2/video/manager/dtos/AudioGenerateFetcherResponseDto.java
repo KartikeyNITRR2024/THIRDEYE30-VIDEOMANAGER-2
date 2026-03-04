@@ -1,6 +1,7 @@
 package com.thirdeye3_2.video.manager.dtos;
 
 import java.util.UUID;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.thirdeye3_2.video.manager.enums.NewsMultiMediaType;
@@ -19,4 +20,6 @@ import lombok.Setter;
 @Builder
 public class AudioGenerateFetcherResponseDto {
     private List<AudioGenerateContent> contents;
+    private TelegramSettingDto telegramSettingDto;
+    private LocalDateTime currentTime;
 }
