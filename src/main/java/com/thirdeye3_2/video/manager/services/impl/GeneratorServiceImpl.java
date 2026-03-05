@@ -44,6 +44,7 @@ import com.thirdeye3_2.video.manager.services.PropertyService;
 import com.thirdeye3_2.video.manager.services.StockGroupService;
 import com.thirdeye3_2.video.manager.services.StockRaceService;
 import com.thirdeye3_2.video.manager.services.TelegramBotService;
+import com.thirdeye3_2.video.manager.services.TtsSoundService;
 import com.thirdeye3_2.video.manager.services.VideoDetailsService;
 import com.thirdeye3_2.video.manager.services.VideoService;
 import com.thirdeye3_2.video.manager.services.VideoSettingService;
@@ -100,6 +101,8 @@ public class GeneratorServiceImpl implements GeneratorService {
 	 
 	 @Autowired
 	 private TelegramBotService telegramBotService;
+	 
+	 private TtsSoundService ttsSoundService;
 	 
 	 public VideoDto getCurrentVideo()
 	 {
@@ -188,6 +191,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 		 }
 		 audioGenerateFetcherResponseDto.setContents(audioGenerateContents);
 		 audioGenerateFetcherResponseDto.setTelegramSettingDto(getTelegramSetting());
+		 audioGenerateFetcherResponseDto.setSounds(ttsSoundService.getAllActive());
 		 audioGenerateFetcherResponseDto.setCurrentTime(LocalDateTime.now());
 		 return audioGenerateFetcherResponseDto;
 	 }

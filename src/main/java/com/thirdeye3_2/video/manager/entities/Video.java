@@ -48,4 +48,7 @@ public class Video {
 
     @Column(name = "is_completed")
     private Boolean isCompleted;
+    
+    @Column(name = "video_multimedia_key")
+    private UUID videoMultiMediaKey;
 }

@@ -15,4 +15,8 @@ public interface VideoService {
     VideoDto update(UUID id, VideoDto dto);
 
     void delete(UUID id);
+
+	List<VideoDto> getPendingVideos();
+
+	void updateIsCompleted(UUID id, Boolean isCompleted, UUID videoMultiMediaKey);
 }

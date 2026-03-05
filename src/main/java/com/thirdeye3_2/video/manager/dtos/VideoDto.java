@@ -8,7 +8,6 @@ import lombok.Data;
 
 @Data
 public class VideoDto {
-
 	private UUID id;
     private String name;
     private String description;
@@ -19,4 +18,5 @@ public class VideoDto {
     private Boolean adsPresent;
     private String adsId;
     private Boolean isCompleted;
+    private UUID videoMultiMediaKey;
 }

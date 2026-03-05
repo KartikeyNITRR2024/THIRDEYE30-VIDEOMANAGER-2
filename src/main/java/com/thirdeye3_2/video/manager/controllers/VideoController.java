@@ -47,4 +47,10 @@ public class VideoController {
         videoService.delete(id);
         return new Response<>(true, 0, null, "Video deleted successfully");
     }
+    
+    @GetMapping("/pending")
+    public Response<List<VideoDto>> getAllPending() {
+        List<VideoDto> list = videoService.getPendingVideos();
+        return new Response<>(true, 0, null, list);
+    }
 }

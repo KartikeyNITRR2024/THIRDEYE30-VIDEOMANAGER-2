@@ -19,6 +19,7 @@ import com.thirdeye3_2.video.manager.dtos.StockDto;
 import com.thirdeye3_2.video.manager.dtos.StockGroupDto;
 import com.thirdeye3_2.video.manager.dtos.StockRaceDto;
 import com.thirdeye3_2.video.manager.dtos.TelegramBotDto;
+import com.thirdeye3_2.video.manager.dtos.TtsSoundDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDetailsDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDto;
 import com.thirdeye3_2.video.manager.dtos.VideoSettingDto;
@@ -37,6 +38,7 @@ import com.thirdeye3_2.video.manager.entities.Stock;
 import com.thirdeye3_2.video.manager.entities.StockGroup;
 import com.thirdeye3_2.video.manager.entities.StockRace;
 import com.thirdeye3_2.video.manager.entities.TelegramBot;
+import com.thirdeye3_2.video.manager.entities.TtsSound;
 import com.thirdeye3_2.video.manager.entities.Video;
 import com.thirdeye3_2.video.manager.entities.VideoDetails;
 import com.thirdeye3_2.video.manager.entities.VideoSetting;
@@ -58,6 +60,7 @@ public class Mapper {
                 .adsPresent(dto.getAdsPresent())
                 .adsId(dto.getAdsId())
                 .isCompleted(dto.getIsCompleted())
+                .videoMultiMediaKey(dto.getVideoMultiMediaKey())
                 .build();
     }
 
@@ -73,6 +76,7 @@ public class Mapper {
         dto.setAdsPresent(video.getAdsPresent());
         dto.setAdsId(video.getAdsId());
         dto.setIsCompleted(video.getIsCompleted());
+        dto.setVideoMultiMediaKey(video.getVideoMultiMediaKey());
         return dto;
     }
     
@@ -736,6 +740,30 @@ public class Mapper {
                 .typeOfVideo(dto.getTypeOfVideo())
                 .lastlyUsed(dto.getLastlyUsed())
                 .createdDateTime(dto.getCreatedDateTime())
+                .build();
+    }
+    
+    public static TtsSoundDto toDto(TtsSound entity) {
+        if (entity == null) return null;
+        return TtsSoundDto.builder()
+                .id(entity.getId())
+                .name(entity.getName())
+                .gender(entity.getGender())
+                .voicePersonalities(entity.getVoicePersonalities())
+                .active(entity.getActive())
+                .lastlyUsed(entity.getLastlyUsed())
+                .build();
+    }
+
+    public static TtsSound toEntity(TtsSoundDto dto) {
+        if (dto == null) return null;
+        return TtsSound.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .gender(dto.getGender())
+                .voicePersonalities(dto.getVoicePersonalities())
+                .active(dto.getActive())
+                .lastlyUsed(dto.getLastlyUsed())
                 .build();
     }
     

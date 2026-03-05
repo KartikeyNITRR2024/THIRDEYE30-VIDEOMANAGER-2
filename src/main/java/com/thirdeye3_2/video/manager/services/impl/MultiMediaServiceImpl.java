@@ -26,8 +26,10 @@ import com.thirdeye3_2.video.manager.enums.NewsMultiMediaType;
 import com.thirdeye3_2.video.manager.enums.TableName;
 import com.thirdeye3_2.video.manager.services.AudioGenerateService;
 import com.thirdeye3_2.video.manager.services.MultiMediaService;
+import com.thirdeye3_2.video.manager.services.NewsService;
 import com.thirdeye3_2.video.manager.services.PropertyService;
 import com.thirdeye3_2.video.manager.services.VideoDetailsService;
+import com.thirdeye3_2.video.manager.services.VideoService;
 
 import io.awspring.cloud.s3.S3Template;
 
@@ -49,7 +51,10 @@ public class MultiMediaServiceImpl implements MultiMediaService {
     private VideoDetailsService videoDetailsService;
     
     @Autowired
-    private NewsServiceImpl newsServiceImpl;
+    private NewsService newsService;
+    
+    @Autowired
+    private VideoService videoService;
     
     @Autowired
     private AudioGenerateService audioGenerateService;
@@ -177,11 +182,11 @@ public class MultiMediaServiceImpl implements MultiMediaService {
 	        {
 	        	if(uploadDto.getNewsMultiMediaType()!=null && uploadDto.getNewsMultiMediaType().equals(NewsMultiMediaType.IMAGE))
 	        	{
-	        		newsServiceImpl.addImageMultiMediaKey(UUID.fromString(saved.getFolder1()), uuidKey);
+	        		newsService.addImageMultiMediaKey(UUID.fromString(saved.getFolder1()), uuidKey);
 	        	}
 	        	else if(uploadDto.getNewsMultiMediaType()!=null && uploadDto.getNewsMultiMediaType().equals(NewsMultiMediaType.AUDIO))
 	        	{
-	        		newsServiceImpl.addAudioMultiMediaKey(UUID.fromString(saved.getFolder1()), uuidKey);
+	        		newsService.addAudioMultiMediaKey(UUID.fromString(saved.getFolder1()), uuidKey);
 	        		audioGenerateService.updateIsAudioGenerated(UUID.fromString(saved.getFolder2()), uuidKey);
 	        	}
 	        }
@@ -192,6 +197,10 @@ public class MultiMediaServiceImpl implements MultiMediaService {
 	        else if(uploadDto.getTableName()!=null && uploadDto.getTableName().equals(TableName.AUDIOGENERATE))
 	        {
 	        	audioGenerateService.updateIsAudioGenerated(UUID.fromString(saved.getFolder2()), uuidKey); 
+	        } 
+	        else if(uploadDto.getTableName()!=null && uploadDto.getTableName().equals(TableName.VIDEO))
+	        {
+	        	videoService.updateIsCompleted(UUID.fromString(saved.getFolder1()), Boolean.TRUE, uuidKey); 
 	        }
 	        
 	        return MultiMediaResponseDto.builder()

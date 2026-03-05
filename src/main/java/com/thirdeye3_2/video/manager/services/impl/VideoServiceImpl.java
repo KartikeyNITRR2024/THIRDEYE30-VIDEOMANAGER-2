@@ -82,11 +82,9 @@ public class VideoServiceImpl implements VideoService {
         video.setAdsPresent(dto.getAdsPresent());
         video.setAdsId(dto.getAdsId());
         video.setIsCompleted(dto.getIsCompleted());
-
+        video.setVideoMultiMediaKey(dto.getVideoMultiMediaKey());
         Video updated = videoRepository.save(video);
-
         log.info("Video updated successfully | id={}", id);
-
         return Mapper.toDto(updated);
     }
 
@@ -97,5 +95,29 @@ public class VideoServiceImpl implements VideoService {
         videoRepository.deleteById(id);
 
         log.info("Video deleted successfully | id={}", id);
+    }
+    
+    @Override
+    public List<VideoDto> getPendingVideos() {
+        log.info("Fetching all incomplete videos...");
+        return videoRepository.findByIsCompletedFalseOrderByCreatedDateTimeDesc()
+                .stream()
+                .map(Mapper::toDto)
+                .collect(Collectors.toList());
+    }
+    
+    @Override
+    public void updateIsCompleted(UUID id, Boolean isCompleted, UUID videoMultiMediaKey)
+    {
+    	 log.info("Updating video iscompleted | id={}", id);
+         Video video = videoRepository.findById(id)
+                 .orElseThrow(() -> {
+                     log.error("Video not found for update | id={}", id);
+                     return new ResourceNotFoundException("Video not found");
+                 });
+         video.setIsCompleted(isCompleted);
+         video.setVideoMultiMediaKey(videoMultiMediaKey);
+         Video updated = videoRepository.save(video);
+         log.info("Video updated successfully | id={}", id);
     }
 }

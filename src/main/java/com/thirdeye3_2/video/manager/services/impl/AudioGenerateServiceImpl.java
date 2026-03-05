@@ -36,18 +36,13 @@ public class AudioGenerateServiceImpl implements AudioGenerateService {
         AudioGenerate entity = Mapper.toEntity(dto);
         entity.setCreatedTime(LocalDateTime.now());
         entity.setIsAudioGenerated(false);
-        entity.setAutoDelete(false);
-        
         if(entity.getTableName() == null)
         {
+            entity.setAutoDelete(false);
         	entity.setTableName(TableName.AUDIOGENERATE);
         }
-        
-
         AudioGenerate saved = repository.save(entity);
-
         log.info("AudioGenerate created successfully with id: {}", saved.getId());
-
         return Mapper.toDto(saved);
     }
 

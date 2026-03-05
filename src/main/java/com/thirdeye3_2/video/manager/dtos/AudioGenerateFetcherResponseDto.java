@@ -21,5 +21,6 @@ import lombok.Setter;
 public class AudioGenerateFetcherResponseDto {
     private List<AudioGenerateContent> contents;
     private TelegramSettingDto telegramSettingDto;
+    private List<TtsSoundDto> sounds;
     private LocalDateTime currentTime;
 }

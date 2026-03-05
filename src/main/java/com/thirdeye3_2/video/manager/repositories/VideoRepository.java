@@ -7,4 +7,5 @@ import com.thirdeye3_2.video.manager.entities.Video;
 
 public interface VideoRepository extends JpaRepository<Video, UUID> {
 	List<Video> findAllByOrderByCreatedDateTimeDesc();
+	List<Video> findByIsCompletedFalseOrderByCreatedDateTimeDesc();
 }
