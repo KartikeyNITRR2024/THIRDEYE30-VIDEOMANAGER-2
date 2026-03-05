@@ -207,7 +207,7 @@ public class NewsServiceImpl implements NewsService {
                         .content(clean(data[1]))
                         .audioContent(clean(data[2]))
                         .newsWarningColor(clean(data[3]))
-                        .autoDelete(Boolean.parseBoolean(clean(data[4])))
+                        .autoDelete(Boolean.TRUE)
                         .isAudioMultiMediaKeyUploaded(Boolean.FALSE)
                         .isImageMultiMediaKeyUploaded(Boolean.FALSE)
                         .build();
