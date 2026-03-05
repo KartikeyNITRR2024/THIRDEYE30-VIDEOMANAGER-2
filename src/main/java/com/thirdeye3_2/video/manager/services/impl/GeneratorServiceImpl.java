@@ -102,6 +102,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 	 @Autowired
 	 private TelegramBotService telegramBotService;
 	 
+	 @Autowired
 	 private TtsSoundService ttsSoundService;
 	 
 	 public VideoDto getCurrentVideo()
