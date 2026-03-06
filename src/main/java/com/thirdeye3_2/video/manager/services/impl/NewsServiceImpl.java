@@ -61,8 +61,10 @@ public class NewsServiceImpl implements NewsService {
                     log.error("News not found with id: {}", id);
                     return new ResourceNotFoundException("News not found");
                 });
+        
+        AudioGenerateDto dto = audioGenerateService.getByTableAndForeignKeyForInternalUse(TableName.NEWS, id);
 
-        return Mapper.toDto(entity, audioGenerateService.getByTableAndForeignKey(TableName.NEWS, id).getContent());
+        return Mapper.toDto(entity, dto==null ? null : dto.getContent());
     }
 
     @Override
@@ -70,8 +72,11 @@ public class NewsServiceImpl implements NewsService {
         log.info("Fetching all news records");
 
         return repository.findAllByOrderByCreatedTimeDesc()
-                .stream()
-                .map(entity -> Mapper.toDto(entity, audioGenerateService.getByTableAndForeignKey(TableName.NEWS, entity.getId()).getContent()))
+        		.stream()
+                .map(entity -> {
+                    AudioGenerateDto audioDto = audioGenerateService.getByTableAndForeignKeyForInternalUse(TableName.NEWS, entity.getId());
+                    return Mapper.toDto(entity, audioDto == null ? null : audioDto.getContent());
+                })
                 .collect(Collectors.toList());
     }
 
@@ -97,8 +102,10 @@ public class NewsServiceImpl implements NewsService {
         News updated = repository.save(entity);
 
         log.info("News updated successfully: {}", id);
+        
+        AudioGenerateDto dto1 = audioGenerateService.getByTableAndForeignKey(TableName.NEWS, id);
 
-        return Mapper.toDto(updated, audioGenerateService.getByTableAndForeignKey(TableName.NEWS, entity.getId()).getContent());
+        return Mapper.toDto(updated, dto1==null ? null : dto1.getContent());
     }
     
     @Override
@@ -157,7 +164,10 @@ public class NewsServiceImpl implements NewsService {
 
         return repository.findByVideoDetailsId(videoDetailsId)
                 .stream()
-                .map(entity -> Mapper.toDto(entity, audioGenerateService.getByTableAndForeignKey(TableName.NEWS, entity.getId()).getContent()))
+                .map(entity -> {
+                    AudioGenerateDto audioDto = audioGenerateService.getByTableAndForeignKeyForInternalUse(TableName.NEWS, entity.getId());
+                    return Mapper.toDto(entity, audioDto == null ? null : audioDto.getContent());
+                })
                 .collect(Collectors.toList());
     }
     

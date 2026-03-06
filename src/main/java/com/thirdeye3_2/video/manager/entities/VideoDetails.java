@@ -44,6 +44,24 @@ public class VideoDetails {
     @Column(name = "bar_graph_json_multimedia_key")
     private UUID barGraphJsonMultiMediaKey;
     
+    @Column(name = "is_intro_audio_string_present", nullable = false)
+    private Boolean isIntroAudioStringPresent;
+    
+    @Column(name = "is_intro_audio_string_uploaded", nullable = false)
+    private Boolean isIntroAudioStringUploaded = false;
+    
+    @Column(name = "intro_audio_multimedia_key")
+    private UUID introAudioMultiMediaKey;
+    
+    @Column(name = "is_outro_audio_string_present", nullable = false)
+    private Boolean isOutroAudioStringPresent;
+    
+    @Column(name = "is_outro_audio_string_uploaded", nullable = false)
+    private Boolean isOutroAudioStringUploaded;
+    
+    @Column(name = "outro_audio_multimedia_key")
+    private UUID outroAudioMultiMediaKey;
+    
     @Column(name = "created_time", nullable = false)
     private LocalDateTime createdTime;
 }

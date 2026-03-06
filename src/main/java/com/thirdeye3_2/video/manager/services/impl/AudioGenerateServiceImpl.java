@@ -2,6 +2,7 @@ package com.thirdeye3_2.video.manager.services.impl;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -38,7 +39,6 @@ public class AudioGenerateServiceImpl implements AudioGenerateService {
         entity.setIsAudioGenerated(false);
         if(entity.getTableName() == null)
         {
-            entity.setAutoDelete(false);
         	entity.setTableName(TableName.AUDIOGENERATE);
         }
         AudioGenerate saved = repository.save(entity);
@@ -140,6 +140,23 @@ public class AudioGenerateServiceImpl implements AudioGenerateService {
                     new ResourceNotFoundException("AudioGenerate not found"));
 
         return Mapper.toDto(entity);
+    }
+    
+    @Override
+    public AudioGenerateDto getByTableAndForeignKeyForInternalUse(TableName tableName, UUID foreignKey) {
+
+        log.info("Fetching AudioGenerate for table: {} and foreignKey: {}",
+                tableName, foreignKey);
+
+        Optional<AudioGenerate> opt = repository
+                .findByTableNameAndForeignKey(tableName, foreignKey);
+        
+        if(opt.isEmpty())
+        {
+        	return null;
+        }
+
+        return Mapper.toDto(opt.get());
     }
     
     @Override

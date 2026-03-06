@@ -178,6 +178,8 @@ public class MultiMediaServiceImpl implements MultiMediaService {
 	                .build()
 	                .toUriString();
 	        
+	        
+	        
 	        if(uploadDto.getTableName()!=null && uploadDto.getTableName().equals(TableName.NEWS))
 	        {
 	        	if(uploadDto.getNewsMultiMediaType()!=null && uploadDto.getNewsMultiMediaType().equals(NewsMultiMediaType.IMAGE))
@@ -190,9 +192,13 @@ public class MultiMediaServiceImpl implements MultiMediaService {
 	        		audioGenerateService.updateIsAudioGenerated(UUID.fromString(saved.getFolder2()), uuidKey);
 	        	}
 	        }
-	        else if(uploadDto.getTableName()!=null && uploadDto.getTableName().equals(TableName.VIDEODETAILS))
+	        else if(uploadDto.getTableName()!=null && List.of(TableName.VIDEODETAILS_BARGAPH, TableName.VIDEODETAILS_INTRO, TableName.VIDEODETAILS_OUTRO).contains(uploadDto.getTableName()))
 	        {
-	        	videoDetailsService.updateBarGraphJsonMultiMediaKey(UUID.fromString(saved.getFolder1()), uuidKey);
+	        	videoDetailsService.updateBarGraphJsonMultiMediaKey(UUID.fromString(saved.getFolder1()), uuidKey, uploadDto.getTableName());
+	        	if(uploadDto.getTableName()!=null && List.of(TableName.VIDEODETAILS_INTRO, TableName.VIDEODETAILS_OUTRO).contains(uploadDto.getTableName()))
+	        	{
+	        		audioGenerateService.updateIsAudioGenerated(UUID.fromString(saved.getFolder2()), uuidKey);
+	        	}
 	        }
 	        else if(uploadDto.getTableName()!=null && uploadDto.getTableName().equals(TableName.AUDIOGENERATE))
 	        {

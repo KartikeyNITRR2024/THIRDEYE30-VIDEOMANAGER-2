@@ -91,11 +91,17 @@ public class Mapper {
                 .outroSubHeader(dto.getOutroSubHeader())
                 .isbarGraphJsonMultiMediaKeyUploaded(dto.getIsbarGraphJsonMultiMediaKeyUploaded())
                 .barGraphJsonMultiMediaKey(dto.getBarGraphJsonMultiMediaKey())
+                .isIntroAudioStringPresent(dto.getIsIntroAudioStringPresent())
+                .isIntroAudioStringUploaded(dto.getIsIntroAudioStringUploaded() != null ? dto.getIsIntroAudioStringUploaded() : false)
+                .introAudioMultiMediaKey(dto.getIntroAudioMultiMediaKey())
+                .isOutroAudioStringPresent(dto.getIsOutroAudioStringPresent())
+                .isOutroAudioStringUploaded(dto.getIsOutroAudioStringUploaded() != null ? dto.getIsOutroAudioStringUploaded() : false)
+                .outroAudioMultiMediaKey(dto.getOutroAudioMultiMediaKey())
                 .createdTime(dto.getCreatedTime())
                 .build();
     }
 
-    public static VideoDetailsDto toDto(VideoDetails entity) {
+    public static VideoDetailsDto toDto(VideoDetails entity, String introAudioString, String outroAudioString) {
         VideoDetailsDto dto = new VideoDetailsDto();
         dto.setId(entity.getId());
         dto.setVideoId(entity.getVideoId());
@@ -106,6 +112,14 @@ public class Mapper {
         dto.setOutroSubHeader(entity.getOutroSubHeader());
         dto.setIsbarGraphJsonMultiMediaKeyUploaded(entity.getIsbarGraphJsonMultiMediaKeyUploaded());
         dto.setBarGraphJsonMultiMediaKey(entity.getBarGraphJsonMultiMediaKey());
+        dto.setIntroAudioString(introAudioString);
+        dto.setIsIntroAudioStringPresent(entity.getIsIntroAudioStringPresent());
+        dto.setIsIntroAudioStringUploaded(entity.getIsIntroAudioStringUploaded());
+        dto.setIntroAudioMultiMediaKey(entity.getIntroAudioMultiMediaKey());
+        dto.setOutroAudioString(outroAudioString);
+        dto.setIsOutroAudioStringPresent(entity.getIsOutroAudioStringPresent());
+        dto.setIsOutroAudioStringUploaded(entity.getIsOutroAudioStringUploaded());
+        dto.setOutroAudioMultiMediaKey(entity.getOutroAudioMultiMediaKey());
         dto.setCreatedTime(entity.getCreatedTime());
         return dto;
     }

@@ -25,4 +25,6 @@ public interface AudioGenerateService {
 	void autoDeleteUnusedAudio();
 
 	AudioGenerateDto updateIsAudioGenerated(UUID id, UUID key);
+
+	AudioGenerateDto getByTableAndForeignKeyForInternalUse(TableName tableName, UUID foreignKey);
 }
