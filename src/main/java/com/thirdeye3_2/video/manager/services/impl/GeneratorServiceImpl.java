@@ -20,6 +20,7 @@ import com.thirdeye3_2.video.manager.dtos.NewsDto;
 import com.thirdeye3_2.video.manager.dtos.StockDto;
 import com.thirdeye3_2.video.manager.dtos.StockGroupDto;
 import com.thirdeye3_2.video.manager.dtos.StockPriceFetcherResponseDto;
+import com.thirdeye3_2.video.manager.dtos.StockRaceDto;
 import com.thirdeye3_2.video.manager.dtos.TelegramBotDto;
 import com.thirdeye3_2.video.manager.dtos.TelegramSettingDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDetailsDto;
@@ -48,6 +49,7 @@ import com.thirdeye3_2.video.manager.services.TtsSoundService;
 import com.thirdeye3_2.video.manager.services.VideoDetailsService;
 import com.thirdeye3_2.video.manager.services.VideoService;
 import com.thirdeye3_2.video.manager.services.VideoSettingService;
+import com.thirdeye3_2.video.manager.utils.ObjectVaryingUtility;
 
 @Service
 public class GeneratorServiceImpl implements GeneratorService {
@@ -209,16 +211,20 @@ public class GeneratorServiceImpl implements GeneratorService {
 		 videoGenerateFetcherResponseDto.setVideoSettingDto(videoSettingDto);
 		 if(videoSettingDto.getIntroPresent())
 		 {
-			 videoGenerateFetcherResponseDto.setIntroVideoDto(introVideoService.getActive());
+//			 videoGenerateFetcherResponseDto.setIntroVideoDto(introVideoService.getActive());
+			 videoGenerateFetcherResponseDto.setIntroVideoDto(new ObjectVaryingUtility().varyFields(introVideoService.getActive(), propertyService.getVaryFields().get(0), propertyService.getVaryFields().get(1)));
 		 }
 		 if(videoSettingDto.getOutroPresent())
 		 {
-			 videoGenerateFetcherResponseDto.setOutroVideoDto(outroVideoService.getActive());
+//			 videoGenerateFetcherResponseDto.setOutroVideoDto(outroVideoService.getActive());
+			 videoGenerateFetcherResponseDto.setOutroVideoDto(new ObjectVaryingUtility().varyFields(outroVideoService.getActive(), propertyService.getVaryFields().get(0), propertyService.getVaryFields().get(1)));
 		 }
 		 if(videoSettingDto.getMainVideoPresent())
 		 {
-			 ContentVideoDto contentVideoDto = contentVideoService.getActive();
+			 ContentVideoDto contentVideoDto = new ObjectVaryingUtility().varyFields(contentVideoService.getActive(), propertyService.getVaryFields().get(0), propertyService.getVaryFields().get(1));
+//			 ContentVideoDto contentVideoDto = contentVideoService.getActive();
 			 videoGenerateFetcherResponseDto.setContentVideoDto(contentVideoDto);
+			 videoGenerateFetcherResponseDto.setOutroVideoDto(new ObjectVaryingUtility().varyFields(outroVideoService.getActive(), propertyService.getVaryFields().get(0), propertyService.getVaryFields().get(1)));
 			 if(contentVideoDto.getIsNewsText())
 			 {
 				 List<NewsDto> newsDtos =  newsService.getByVideoDetailsId(videoDetailsDto.getId());
@@ -260,19 +266,25 @@ public class GeneratorServiceImpl implements GeneratorService {
 			 }
 			 if(contentVideoDto.getIsHeaderPresent())
 			 {
-				 videoGenerateFetcherResponseDto.setHeaderDto(headerService.getActive());
+//				 videoGenerateFetcherResponseDto.setHeaderDto(headerService.getActive());
+				 videoGenerateFetcherResponseDto.setHeaderDto(new ObjectVaryingUtility().varyFields(headerService.getActive(), propertyService.getVaryFields().get(0), propertyService.getVaryFields().get(1)));
 			 }
 			 if(contentVideoDto.getIsNewsImage())
 			 {
-				 videoGenerateFetcherResponseDto.setNewsImageDto(newsImageService.getActive());
+//				 videoGenerateFetcherResponseDto.setNewsImageDto(newsImageService.getActive());
+				 videoGenerateFetcherResponseDto.setNewsImageDto(new ObjectVaryingUtility().varyFields(newsImageService.getActive(), propertyService.getVaryFields().get(0), propertyService.getVaryFields().get(1)));
 			 }
 			 if(contentVideoDto.getIsNewsText())
 			 {
-				 videoGenerateFetcherResponseDto.setNewsTextSoundDto(newsTextSoundService.getActive());
+//				 videoGenerateFetcherResponseDto.setNewsTextSoundDto(newsTextSoundService.getActive());
+				 videoGenerateFetcherResponseDto.setNewsTextSoundDto(new ObjectVaryingUtility().varyFields(newsTextSoundService.getActive(), propertyService.getVaryFields().get(0), propertyService.getVaryFields().get(1)));
 			 }
 			 if(contentVideoDto.getIsBarRace())
 			 {
-				 videoGenerateFetcherResponseDto.setStockRaceDto(stockRaceService.getActive());
+//				 videoGenerateFetcherResponseDto.setStockRaceDto(stockRaceService.getActive());
+				 StockRaceDto stockRaceDto = new ObjectVaryingUtility().varyFields(stockRaceService.getActive(), propertyService.getVaryFields().get(0), propertyService.getVaryFields().get(1));
+				 stockRaceDto.setBarColors(new ObjectVaryingUtility().varyStringList( stockRaceDto.getBarColors(),propertyService.getVaryFields().get(0), propertyService.getVaryFields().get(1)));
+				 videoGenerateFetcherResponseDto.setStockRaceDto(stockRaceDto);
 			 }
 		 }
 		 videoGenerateFetcherResponseDto.setTelegramSettingDto(getTelegramSetting());

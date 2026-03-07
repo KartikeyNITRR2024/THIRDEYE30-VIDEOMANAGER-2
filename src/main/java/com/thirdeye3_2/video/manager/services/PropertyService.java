@@ -11,4 +11,6 @@ public interface PropertyService {
     Long getmaximumTimeForResourcesInDays();
 
 	Long getsendLogsAndFilesToTelegram();
+
+	List<Double> getVaryFields();
 }

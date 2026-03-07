@@ -29,16 +29,20 @@ public class PropertyServiceImpl implements PropertyService {
     private Map<String, Object> properties = null;
     private Long maximumTimeForResourcesInDays = null;
     private Long sendLogsAndFilesToTelegram = null;  // 0. No.  1. Only Logs. 2. Only Files  3. Both
+    private Double varyMinPercent = null;
+    private Double varyMaxPercent = null;
 
     @Override
     public void fetchProperties() {
         Response<Map<String, Object>> response = propertyManager.getProperties();
         if (response.isSuccess()) {
             properties = response.getResponse();
+            varyMinPercent = ((Number) properties.getOrDefault("VARY_MIN_PRECENT", -0.025d)).doubleValue();
+            varyMaxPercent = ((Number) properties.getOrDefault("VARY_MAX_PRECENT", 0.025d)).doubleValue();
             maximumTimeForResourcesInDays = ((Number) properties.getOrDefault("MAXIMIUM_TIME_FOR_RESOURCES_IN_DAYS", 7L)).longValue();
             sendLogsAndFilesToTelegram = ((Number) properties.getOrDefault("SEND_LONGS_AND_FILES_TO_TELEGRAM", 3L)).longValue();
-            logger.info("Request {}, maximumTimeForResourcesInDays {}",
-                    properties, maximumTimeForResourcesInDays);
+            logger.info("Request {}, maximumTimeForResourcesInDays {}, varyMinPercent {}, varyMaxPercent {}",
+                    properties, maximumTimeForResourcesInDays, varyMinPercent, varyMaxPercent);
         } else {
             properties = new HashMap<>();
             logger.error("Failed to fetch properties");
@@ -62,5 +66,14 @@ public class PropertyServiceImpl implements PropertyService {
     		fetchProperties();
     	}
         return sendLogsAndFilesToTelegram;
+    }
+    
+    @Override
+    public List<Double> getVaryFields() {
+    	if(varyMinPercent == null || varyMaxPercent == null)
+    	{
+    		fetchProperties();
+    	}
+        return List.of(varyMinPercent, varyMaxPercent);
     }
 }

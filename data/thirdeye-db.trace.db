@@ -1661,3 +1661,17 @@ insert into audio_generate (audio_generated_time,audio_multimedia_key,auto_delet
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-03-07 19:04:26.094729+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM VIDEOS \000d\000a[*]SELECT * FROM VIDEOS_DETAILS"; SQL statement:
+SELECT * FROM VIDEOS 
+SELECT * FROM VIDEOS_DETAILS [42000-224]
+2026-03-07 19:04:38.325935+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "VIDEOS_DETAILS" not found; SQL statement:
+SELECT * FROM VIDEOS_DETAILS [42102-224]
+2026-03-07 19:04:40.281916+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "VIDEOS_DETAILS" not found; SQL statement:
+SELECT * FROM VIDEOS_DETAILS [42102-224]
+2026-03-07 19:05:47.783413+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM VIDEOS \000d\000a[*]SELECT * FROM VIDEO_DETAILS"; SQL statement:
+SELECT * FROM VIDEOS 
+SELECT * FROM VIDEO_DETAILS [42000-224]
