@@ -12,5 +12,9 @@ public interface PropertyService {
 
 	Long getsendLogsAndFilesToTelegram();
 
-	List<Double> getVaryFields();
+	List<Double> getVaryFieldsInteger();
+
+	List<Double> getVaryFieldsDouble();
+
+	List<Double> getVaryFieldsColor();
 }

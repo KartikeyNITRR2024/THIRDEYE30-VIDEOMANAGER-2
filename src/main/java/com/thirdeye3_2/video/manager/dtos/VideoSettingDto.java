@@ -6,9 +6,13 @@ import java.util.UUID;
 import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class VideoSettingDto {
     private UUID id;
     private String name;

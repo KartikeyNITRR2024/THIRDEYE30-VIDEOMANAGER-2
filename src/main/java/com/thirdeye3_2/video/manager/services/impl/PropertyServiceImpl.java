@@ -29,20 +29,28 @@ public class PropertyServiceImpl implements PropertyService {
     private Map<String, Object> properties = null;
     private Long maximumTimeForResourcesInDays = null;
     private Long sendLogsAndFilesToTelegram = null;  // 0. No.  1. Only Logs. 2. Only Files  3. Both
-    private Double varyMinPercent = null;
-    private Double varyMaxPercent = null;
+    private Double varyMinPercentInteger = null;
+    private Double varyMaxPercentInteger = null;
+    private Double varyMinPercentDouble = null;
+    private Double varyMaxPercentDouble = null;
+    private Double varyMinPercentColor = null;
+    private Double varyMaxPercentColor = null;
 
     @Override
     public void fetchProperties() {
         Response<Map<String, Object>> response = propertyManager.getProperties();
         if (response.isSuccess()) {
             properties = response.getResponse();
-            varyMinPercent = ((Number) properties.getOrDefault("VARY_MIN_PRECENT", -0.025d)).doubleValue();
-            varyMaxPercent = ((Number) properties.getOrDefault("VARY_MAX_PRECENT", 0.025d)).doubleValue();
+            varyMinPercentInteger = ((Number) properties.getOrDefault("VARY_MIN_PRECENT_INTEGER", -0.10d)).doubleValue();
+            varyMaxPercentInteger = ((Number) properties.getOrDefault("VARY_MAX_PRECENT_INTEGER", 0.15d)).doubleValue();
+            varyMinPercentDouble = ((Number) properties.getOrDefault("VARY_MIN_PRECENT_DOUBLE", -0.05d)).doubleValue();
+            varyMaxPercentDouble = ((Number) properties.getOrDefault("VARY_MAX_PRECENT_DOUBLE", 0.10d)).doubleValue();
+            varyMinPercentColor = ((Number) properties.getOrDefault("VARY_MIN_PRECENT_COLOR", -0.15d)).doubleValue();
+            varyMaxPercentColor = ((Number) properties.getOrDefault("VARY_MAX_PRECENT_COLOR", 0.20d)).doubleValue();
             maximumTimeForResourcesInDays = ((Number) properties.getOrDefault("MAXIMIUM_TIME_FOR_RESOURCES_IN_DAYS", 7L)).longValue();
             sendLogsAndFilesToTelegram = ((Number) properties.getOrDefault("SEND_LONGS_AND_FILES_TO_TELEGRAM", 3L)).longValue();
             logger.info("Request {}, maximumTimeForResourcesInDays {}, varyMinPercent {}, varyMaxPercent {}",
-                    properties, maximumTimeForResourcesInDays, varyMinPercent, varyMaxPercent);
+                    properties, maximumTimeForResourcesInDays, varyMinPercentInteger, varyMinPercentInteger);
         } else {
             properties = new HashMap<>();
             logger.error("Failed to fetch properties");
@@ -69,11 +77,29 @@ public class PropertyServiceImpl implements PropertyService {
     }
     
     @Override
-    public List<Double> getVaryFields() {
-    	if(varyMinPercent == null || varyMaxPercent == null)
+    public List<Double> getVaryFieldsInteger() {
+    	if(varyMinPercentInteger == null || varyMaxPercentInteger == null)
     	{
     		fetchProperties();
     	}
-        return List.of(varyMinPercent, varyMaxPercent);
+        return List.of(varyMinPercentInteger, varyMaxPercentInteger);
+    }
+    
+    @Override
+    public List<Double> getVaryFieldsDouble() {
+    	if(varyMinPercentDouble == null || varyMaxPercentDouble == null)
+    	{
+    		fetchProperties();
+    	}
+        return List.of(varyMinPercentDouble, varyMaxPercentDouble);
+    }
+    
+    @Override
+    public List<Double> getVaryFieldsColor() {
+    	if(varyMinPercentColor == null || varyMaxPercentColor == null)
+    	{
+    		fetchProperties();
+    	}
+        return List.of(varyMinPercentColor, varyMaxPercentColor);
     }
 }
