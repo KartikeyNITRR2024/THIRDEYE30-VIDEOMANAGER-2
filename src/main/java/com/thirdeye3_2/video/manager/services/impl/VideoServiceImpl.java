@@ -29,6 +29,11 @@ public class VideoServiceImpl implements VideoService {
     public VideoDto create(VideoDto dto) {
         log.info("Creating new video | name={} | type={}",
                 dto.getName(), dto.getTypeOfVideo());
+        
+        if(!dto.getAdsPresent())
+        {
+        	dto.setAdsId(null);
+        }
 
         Video saved = videoRepository.save(Mapper.toEntity(dto));
 
@@ -74,6 +79,10 @@ public class VideoServiceImpl implements VideoService {
                     return new ResourceNotFoundException("Video not found");
                 });
 
+        if(!dto.getAdsPresent())
+        {
+        	dto.setAdsId(null);
+        }
         video.setName(dto.getName());
         video.setDescription(dto.getDescription());
         video.setDateOfUpload(dto.getDateOfUpload());

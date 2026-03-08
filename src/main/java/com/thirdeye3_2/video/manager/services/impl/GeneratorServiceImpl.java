@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,7 @@ import com.thirdeye3_2.video.manager.entities.Stock;
 import com.thirdeye3_2.video.manager.enums.BotType;
 import com.thirdeye3_2.video.manager.enums.NewsMultiMediaType;
 import com.thirdeye3_2.video.manager.exceptions.GeneratorFetchException;
+import com.thirdeye3_2.video.manager.services.AdvertisementService;
 import com.thirdeye3_2.video.manager.services.AudioGenerateService;
 import com.thirdeye3_2.video.manager.services.ContentVideoService;
 import com.thirdeye3_2.video.manager.services.CurrentVideoService;
@@ -113,6 +115,9 @@ public class GeneratorServiceImpl implements GeneratorService {
 	 
 	 @Autowired
 	 private ObjectVaryingUtility objectVaryingUtility;
+	 
+	 @Autowired
+	 private AdvertisementService advertisementService;
 	 
 	 public VideoDto getCurrentVideo()
 	 {
@@ -212,12 +217,14 @@ public class GeneratorServiceImpl implements GeneratorService {
 		 VideoGenerateFetcherResponseDto videoGenerateFetcherResponseDto = new VideoGenerateFetcherResponseDto();
 		 VideoDto videoDto = getCurrentVideo();
 		 videoGenerateFetcherResponseDto.setVideoDto(videoDto);
+		 if(videoDto.getAdsPresent())
+		 {
+			 videoGenerateFetcherResponseDto.setAdvertisementDto(advertisementService.getAdvertisement(videoDto.getAdsId()));
+		 }
 		 VideoDetailsDto videoDetailsDto = getCurrentVideoDetails();
 		 videoGenerateFetcherResponseDto.setVideoDetailsDto(videoDetailsDto);
 		 VideoSettingDto videoSettingDto = videoSettingService.getActiveSetting();
-		 System.out.println(videoSettingDto);
 		 videoGenerateFetcherResponseDto.setVideoSettingDto(objectVaryingUtility.varyFields(videoSettingDto));
-		 System.out.println(videoGenerateFetcherResponseDto.getVideoSettingDto());
 		 if(videoSettingDto.getIntroPresent())
 		 {
 //			 videoGenerateFetcherResponseDto.setIntroVideoDto(introVideoService.getActive());

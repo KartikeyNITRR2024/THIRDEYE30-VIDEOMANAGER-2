@@ -44,7 +44,7 @@ public class Video {
     private Boolean adsPresent;
 
     @Column(name = "ads_id")
-    private String adsId;
+    private UUID adsId;
 
     @Column(name = "is_completed")
     private Boolean isCompleted;

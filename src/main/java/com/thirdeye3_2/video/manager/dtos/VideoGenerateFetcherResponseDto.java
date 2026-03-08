@@ -23,5 +23,6 @@ public class VideoGenerateFetcherResponseDto {
     private NewsTextSoundDto newsTextSoundDto;
     private StockRaceDto stockRaceDto;
     private TelegramSettingDto telegramSettingDto;
+    private AdvertisementDto advertisementDto;
     private LocalDateTime currentTime;
 }

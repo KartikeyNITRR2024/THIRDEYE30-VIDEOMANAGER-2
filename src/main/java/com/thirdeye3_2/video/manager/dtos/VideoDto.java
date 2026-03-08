@@ -16,7 +16,7 @@ public class VideoDto {
     private UUID stockGroup;
     private LocalDateTime createdDateTime;
     private Boolean adsPresent;
-    private String adsId;
+    private UUID adsId;
     private Boolean isCompleted;
     private UUID videoMultiMediaKey;
 }

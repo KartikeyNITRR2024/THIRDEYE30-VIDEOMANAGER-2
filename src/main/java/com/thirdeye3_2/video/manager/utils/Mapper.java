@@ -2,8 +2,11 @@ package com.thirdeye3_2.video.manager.utils;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
+import com.thirdeye3_2.video.manager.dtos.AdvertisementDto;
 import com.thirdeye3_2.video.manager.dtos.AudioGenerateDto;
+import com.thirdeye3_2.video.manager.dtos.ContentAdvertisementDto;
 import com.thirdeye3_2.video.manager.dtos.ContentGeneratorDto;
 import com.thirdeye3_2.video.manager.dtos.ContentVideoDto;
 import com.thirdeye3_2.video.manager.dtos.CurrentVideoDto;
@@ -23,7 +26,9 @@ import com.thirdeye3_2.video.manager.dtos.TtsSoundDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDetailsDto;
 import com.thirdeye3_2.video.manager.dtos.VideoDto;
 import com.thirdeye3_2.video.manager.dtos.VideoSettingDto;
+import com.thirdeye3_2.video.manager.entities.Advertisement;
 import com.thirdeye3_2.video.manager.entities.AudioGenerate;
+import com.thirdeye3_2.video.manager.entities.ContentAdvertisement;
 import com.thirdeye3_2.video.manager.entities.ContentGenerator;
 import com.thirdeye3_2.video.manager.entities.ContentVideo;
 import com.thirdeye3_2.video.manager.entities.CurrentVideo;
@@ -778,6 +783,97 @@ public class Mapper {
                 .voicePersonalities(dto.getVoicePersonalities())
                 .active(dto.getActive())
                 .lastlyUsed(dto.getLastlyUsed())
+                .build();
+    }
+    
+    public static AdvertisementDto toDto(Advertisement entity) {
+
+        AdvertisementDto dto = new AdvertisementDto();
+
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setDescription(entity.getDescription());
+        dto.setActive(entity.getActive());
+        dto.setCreatedTime(entity.getCreatedTime());
+
+        dto.setIsIntroAdvertismentPresent(entity.getIsIntroAdvertismentPresent());
+        dto.setIntroAdvertismentMultimediaKey(entity.getIntroAdvertismentMultimediaKey());
+        dto.setIntroAdvertismentSize(entity.getIntroAdvertismentSize());
+
+        dto.setIsBadgeAdvertismentPresent(entity.getIsBadgeAdvertismentPresent());
+        dto.setBadgeAdvertismentMultimediaKey(entity.getBadgeAdvertismentMultimediaKey());
+        dto.setBadgeAdvertismentSize(entity.getBadgeAdvertismentSize());
+
+        dto.setBadgeAdvertismentBackgroundColor(entity.getBadgeAdvertismentBackgroundColor());
+        dto.setBadgeAdvertismentBackgroundWidthPercent(entity.getBadgeAdvertismentBackgroundWidthPercent());
+
+        dto.setIsContentAdvertismentPresent(entity.getIsContentAdvertismentPresent());
+
+        dto.setContentAdvertisements(
+                entity.getContentAdvertisements()
+                        .stream()
+                        .map(Mapper::toDto)
+                        .collect(Collectors.toList())
+        );
+
+        return dto;
+    }
+
+    public static Advertisement toEntity(AdvertisementDto dto) {
+        Advertisement entity = Advertisement.builder()
+                .id(dto.getId())
+        		.name(dto.getName())
+        		.description(dto.getDescription())
+                .active(dto.getActive())
+                .isIntroAdvertismentPresent(dto.getIsIntroAdvertismentPresent())
+                .introAdvertismentMultimediaKey(dto.getIntroAdvertismentMultimediaKey())
+                .introAdvertismentSize(dto.getIntroAdvertismentSize())
+                .isBadgeAdvertismentPresent(dto.getIsBadgeAdvertismentPresent())
+                .badgeAdvertismentMultimediaKey(dto.getBadgeAdvertismentMultimediaKey())
+                .badgeAdvertismentSize(dto.getBadgeAdvertismentSize())
+                .badgeAdvertismentBackgroundColor(dto.getBadgeAdvertismentBackgroundColor())
+                .badgeAdvertismentBackgroundWidthPercent(dto.getBadgeAdvertismentBackgroundWidthPercent())
+                .isContentAdvertismentPresent(dto.getIsContentAdvertismentPresent())
+                .createdTime(dto.getCreatedTime())
+                .build();
+
+        return entity;
+    }
+    
+    public static ContentAdvertisementDto toDto(ContentAdvertisement entity) {
+
+        ContentAdvertisementDto dto = new ContentAdvertisementDto();
+
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setDescription(entity.getDescription());
+        dto.setActive(entity.getActive());
+        dto.setStartingSecond(entity.getStartingSecond());
+        dto.setEndingSecond(entity.getEndingSecond());
+        dto.setContentMultimediaKey(entity.getContentMultimediaKey());
+        dto.setHeight(entity.getHeight());
+        dto.setContentAdvertisementPosition(entity.getContentAdvertisementPosition());
+        dto.setAdvertisementId(entity.getAdvertisement().getId());
+        dto.setCreatedTime(entity.getCreatedTime());
+
+        return dto;
+    }
+    
+    public static ContentAdvertisement toEntity(ContentAdvertisementDto dto) {
+
+        if (dto == null) {
+            return null;
+        }
+
+        return ContentAdvertisement.builder()
+        		.name(dto.getName())
+        		.description(dto.getDescription())
+                .active(dto.getActive())
+                .startingSecond(dto.getStartingSecond())
+                .endingSecond(dto.getEndingSecond())
+                .contentMultimediaKey(dto.getContentMultimediaKey())
+                .height(dto.getHeight())
+                .contentAdvertisementPosition(dto.getContentAdvertisementPosition())
                 .build();
     }
     
