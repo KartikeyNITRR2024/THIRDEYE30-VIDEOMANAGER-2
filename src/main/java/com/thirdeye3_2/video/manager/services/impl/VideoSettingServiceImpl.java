@@ -98,6 +98,7 @@ public class VideoSettingServiceImpl implements VideoSettingService {
         entity.setIsAudio(dto.getIsAudio());
         entity.setAudioMultiMediaKey(dto.getAudioMultiMediaKey());
         entity.setAudioVolumne(dto.getAudioVolumne());
+        entity.setAudioTimingMode(dto.getAudioTimingMode());
         VideoSetting updated = repository.save(entity);
 
         log.info("VideoSetting updated successfully | id={}", id);
