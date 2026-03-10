@@ -43,7 +43,7 @@ public class NewsServiceImpl implements NewsService {
 
         News entity = Mapper.toEntity(dto);
         entity.setCreatedTime(LocalDateTime.now());
-        entity.setAutoDelete(false);
+        entity.setAutoDelete(Boolean.TRUE);
 
         News saved = repository.save(entity);
 
