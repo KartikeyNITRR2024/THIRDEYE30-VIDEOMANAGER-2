@@ -3,6 +3,8 @@ package com.thirdeye3_2.video.manager.dtos;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.thirdeye3_2.video.manager.enums.AudioTimingMode;
+
 import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
@@ -31,5 +33,6 @@ public class VideoSettingDto {
     private Boolean isAudio;
     private UUID audioMultiMediaKey;
     private Integer audioVolumne;
+    private AudioTimingMode audioTimingMode;
     private LocalDateTime lastlyUsed;
 }

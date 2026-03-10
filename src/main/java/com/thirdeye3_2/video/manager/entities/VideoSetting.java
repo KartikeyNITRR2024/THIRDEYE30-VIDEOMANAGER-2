@@ -3,8 +3,12 @@ package com.thirdeye3_2.video.manager.entities;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.thirdeye3_2.video.manager.enums.AudioTimingMode;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -74,6 +78,10 @@ public class VideoSetting {
     
     @Column(name = "audio_volumne")
     private Integer audioVolumne;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "audio_timing_mode", nullable = false)
+    private AudioTimingMode audioTimingMode;
     
     @Column(name = "lastly_used")
     private LocalDateTime lastlyUsed;

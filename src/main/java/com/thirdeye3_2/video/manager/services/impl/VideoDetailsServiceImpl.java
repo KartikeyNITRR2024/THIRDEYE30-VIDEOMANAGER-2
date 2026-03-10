@@ -128,11 +128,7 @@ public class VideoDetailsServiceImpl implements VideoDetailsService {
                     log.error("VideoDetails not found for update | id={}", id);
                     return new ResourceNotFoundException("VideoDetails not found");
                 });
-        
-        if(entity.getVideoId() != dto.getVideoId())
-        {
-        	throw new ResourceNotFoundException("Video id cannot be changed");
-        }
+
         entity.setIntroHeader(dto.getIntroHeader());
         entity.setIntroSubHeader(dto.getIntroSubHeader());
         entity.setHeader(dto.getHeader());

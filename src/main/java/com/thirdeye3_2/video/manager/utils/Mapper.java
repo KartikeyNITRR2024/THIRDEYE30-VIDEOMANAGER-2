@@ -271,6 +271,7 @@ public class Mapper {
                 .isAudio(dto.getIsAudio())
                 .audioMultiMediaKey(dto.getAudioMultiMediaKey())
                 .audioVolumne(dto.getAudioVolumne())
+                .audioTimingMode(dto.getAudioTimingMode())
                 .lastlyUsed(dto.getLastlyUsed())
                 .build();
     }
@@ -294,6 +295,7 @@ public class Mapper {
                 .isAudio(entity.getIsAudio())
                 .audioMultiMediaKey(entity.getAudioMultiMediaKey())
                 .audioVolumne(entity.getAudioVolumne())
+                .audioTimingMode(entity.getAudioTimingMode())
                 .lastlyUsed(entity.getLastlyUsed())
                 .build();
     }
