@@ -57,7 +57,7 @@ public class VideoDetailsServiceImpl implements VideoDetailsService {
         }
         if(saved.getIsOutroAudioStringPresent())
         {
-        	createdOutroString = audioGenerateService.create(new AudioGenerateDto(null, TableName.VIDEODETAILS_OUTRO, saved.getId(), null, null, Boolean.FALSE, null, Boolean.TRUE, dto.getIntroAudioString())).getContent();
+        	createdOutroString = audioGenerateService.create(new AudioGenerateDto(null, TableName.VIDEODETAILS_OUTRO, saved.getId(), null, null, Boolean.FALSE, null, Boolean.TRUE, dto.getOutroAudioString())).getContent();
         }
         
         return Mapper.toDto(saved, createdIntroString, createdOutroString);
