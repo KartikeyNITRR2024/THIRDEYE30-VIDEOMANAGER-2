@@ -245,13 +245,9 @@ public class GeneratorServiceImpl implements GeneratorService {
 		 }
 		 if(videoSettingDto.getMainVideoPresent())
 		 {
-			 ContentVideoDto contentVideoDto = objectVaryingUtility.varyFields(contentVideoService.getActive());
-//			 ContentVideoDto contentVideoDto = contentVideoService.getActive();
+//			 ContentVideoDto contentVideoDto = objectVaryingUtility.varyFields(contentVideoService.getActive());
+			 ContentVideoDto contentVideoDto = contentVideoService.getActive();
 			 videoGenerateFetcherResponseDto.setContentVideoDto(contentVideoDto);
-			 videoGenerateFetcherResponseDto.getContentVideoDto().setHeaderHeightInPercent(contentVideoDto.getHeaderHeightInPercent());
-			 videoGenerateFetcherResponseDto.getContentVideoDto().setBarRaceHeightInPercent(contentVideoDto.getBarRaceHeightInPercent());
-			 videoGenerateFetcherResponseDto.getContentVideoDto().setNewsImageHeightInPercent(contentVideoDto.getNewsImageHeightInPercent());
-			 videoGenerateFetcherResponseDto.getContentVideoDto().setNewsTexteHeightInPercent(contentVideoDto.getNewsTexteHeightInPercent());
 			 if(contentVideoDto.getIsNewsText())
 			 {
 				 List<NewsDto> newsDtos =  newsService.getByVideoDetailsId(videoDetailsDto.getId());
