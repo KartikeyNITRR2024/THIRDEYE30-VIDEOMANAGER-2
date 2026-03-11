@@ -225,6 +225,8 @@ public class GeneratorServiceImpl implements GeneratorService {
 		 videoGenerateFetcherResponseDto.setVideoDetailsDto(videoDetailsDto);
 		 VideoSettingDto videoSettingDto = videoSettingService.getActiveSetting();
 		 videoGenerateFetcherResponseDto.setVideoSettingDto(objectVaryingUtility.varyFields(videoSettingDto));
+		 videoGenerateFetcherResponseDto.getVideoSettingDto().setIntroTime(videoSettingDto.getIntroTime());
+		 videoGenerateFetcherResponseDto.getVideoSettingDto().setOutroTime(videoSettingDto.getOutroTime());
 		 if(videoSettingDto.getIntroPresent())
 		 {
 //			 videoGenerateFetcherResponseDto.setIntroVideoDto(introVideoService.getActive());
@@ -246,7 +248,10 @@ public class GeneratorServiceImpl implements GeneratorService {
 			 ContentVideoDto contentVideoDto = objectVaryingUtility.varyFields(contentVideoService.getActive());
 //			 ContentVideoDto contentVideoDto = contentVideoService.getActive();
 			 videoGenerateFetcherResponseDto.setContentVideoDto(contentVideoDto);
-			 videoGenerateFetcherResponseDto.setOutroVideoDto(objectVaryingUtility.varyFields(outroVideoService.getActive()));
+			 videoGenerateFetcherResponseDto.getContentVideoDto().setHeaderHeightInPercent(contentVideoDto.getHeaderHeightInPercent());
+			 videoGenerateFetcherResponseDto.getContentVideoDto().setBarRaceHeightInPercent(contentVideoDto.getBarRaceHeightInPercent());
+			 videoGenerateFetcherResponseDto.getContentVideoDto().setNewsImageHeightInPercent(contentVideoDto.getNewsImageHeightInPercent());
+			 videoGenerateFetcherResponseDto.getContentVideoDto().setNewsTexteHeightInPercent(contentVideoDto.getNewsTexteHeightInPercent());
 			 if(contentVideoDto.getIsNewsText())
 			 {
 				 List<NewsDto> newsDtos =  newsService.getByVideoDetailsId(videoDetailsDto.getId());
