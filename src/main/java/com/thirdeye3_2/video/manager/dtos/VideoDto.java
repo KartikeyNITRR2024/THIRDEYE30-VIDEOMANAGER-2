@@ -3,6 +3,7 @@ package com.thirdeye3_2.video.manager.dtos;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.thirdeye3_2.video.manager.enums.Interval;
 import com.thirdeye3_2.video.manager.enums.VideoType;
 import lombok.Data;
 
@@ -11,7 +12,9 @@ public class VideoDto {
 	private UUID id;
     private String name;
     private String description;
-    private LocalDateTime dateOfUpload;
+    private LocalDateTime startdateOfUpload;
+    private LocalDateTime enddateOfUpload;
+    private Interval interval;
     private VideoType typeOfVideo;
     private UUID stockGroup;
     private LocalDateTime createdDateTime;

@@ -55,7 +55,9 @@ public class Mapper {
                 .id(dto.getId() != null ? dto.getId() : UUID.randomUUID())
                 .name(dto.getName())
                 .description(dto.getDescription())
-                .dateOfUpload(dto.getDateOfUpload())
+                .startdateOfUpload(dto.getStartdateOfUpload())
+                .enddateOfUpload(dto.getEnddateOfUpload())
+                .interval(dto.getInterval())
                 .typeOfVideo(dto.getTypeOfVideo())
                 .stockGroup(dto.getStockGroup())
                 .createdDateTime(
@@ -74,7 +76,9 @@ public class Mapper {
         dto.setId(video.getId());
         dto.setName(video.getName());
         dto.setDescription(video.getDescription());
-        dto.setDateOfUpload(video.getDateOfUpload());
+        dto.setStartdateOfUpload(video.getStartdateOfUpload());
+        dto.setEnddateOfUpload(video.getEnddateOfUpload());
+        dto.setInterval(video.getInterval());
         dto.setTypeOfVideo(video.getTypeOfVideo());
         dto.setStockGroup(video.getStockGroup());
         dto.setCreatedDateTime(video.getCreatedDateTime());

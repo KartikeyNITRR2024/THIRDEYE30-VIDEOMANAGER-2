@@ -3,6 +3,7 @@ package com.thirdeye3_2.video.manager.entities;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.thirdeye3_2.video.manager.enums.Interval;
 import com.thirdeye3_2.video.manager.enums.VideoType;
 
 import jakarta.persistence.*;
@@ -27,8 +28,15 @@ public class Video {
     @Column(length = 2000)
     private String description;
 
-    @Column(name = "date_of_upload")
-    private LocalDateTime dateOfUpload;
+    @Column(name = "start_date_of_upload")
+    private LocalDateTime startdateOfUpload;
+    
+    @Column(name = "end_date_of_upload")
+    private LocalDateTime enddateOfUpload;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "\"interval\"")
+    private Interval interval;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type_of_video", nullable = false)

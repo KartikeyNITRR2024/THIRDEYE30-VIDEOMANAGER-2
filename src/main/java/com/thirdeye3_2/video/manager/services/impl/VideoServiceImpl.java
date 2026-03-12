@@ -85,7 +85,9 @@ public class VideoServiceImpl implements VideoService {
         }
         video.setName(dto.getName());
         video.setDescription(dto.getDescription());
-        video.setDateOfUpload(dto.getDateOfUpload());
+        video.setStartdateOfUpload(dto.getStartdateOfUpload());
+        video.setEnddateOfUpload(dto.getEnddateOfUpload());
+        video.setInterval(dto.getInterval());
         video.setTypeOfVideo(dto.getTypeOfVideo());
         video.setStockGroup(dto.getStockGroup());
         video.setAdsPresent(dto.getAdsPresent());

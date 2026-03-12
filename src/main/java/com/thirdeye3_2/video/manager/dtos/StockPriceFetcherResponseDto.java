@@ -12,7 +12,9 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class StockPriceFetcherResponseDto {
-   private LocalDateTime dateOfStockPrice;
+   private LocalDateTime startDateOfStockPrice;
+   private LocalDateTime endDateOfStockPrice;
+   private String interval;
    private UUID videoUuid;
    private List<String> stockAndMarketCodes;
    private TelegramSettingDto telegramSettingDto;

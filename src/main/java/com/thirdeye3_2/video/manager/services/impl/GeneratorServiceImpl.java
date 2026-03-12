@@ -185,7 +185,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 				 stockCodes.add(stockCode);
 			 }
 		 }
-		 StockPriceFetcherResponseDto stockPriceFetcherResponseDto = new StockPriceFetcherResponseDto(currentVideo.getDateOfUpload(), currentVideo.getId(), stockCodes, getTelegramSetting(), LocalDateTime.now());
+		 StockPriceFetcherResponseDto stockPriceFetcherResponseDto = new StockPriceFetcherResponseDto(currentVideo.getStartdateOfUpload(), currentVideo.getEnddateOfUpload(), currentVideo.getInterval().toYfinanceCode(), currentVideo.getId(), stockCodes, getTelegramSetting(), LocalDateTime.now());
 		 return stockPriceFetcherResponseDto;
 	 }
 	 
