@@ -100,6 +100,7 @@ public class Mapper {
                 .outroSubHeader(dto.getOutroSubHeader())
                 .isbarGraphJsonMultiMediaKeyUploaded(dto.getIsbarGraphJsonMultiMediaKeyUploaded())
                 .barGraphJsonMultiMediaKey(dto.getBarGraphJsonMultiMediaKey())
+                .barGraphRaceFooter(dto.getBarGraphRaceFooter())
                 .isIntroAudioStringPresent(dto.getIsIntroAudioStringPresent())
                 .isIntroAudioStringUploaded(dto.getIsIntroAudioStringUploaded() != null ? dto.getIsIntroAudioStringUploaded() : false)
                 .introAudioMultiMediaKey(dto.getIntroAudioMultiMediaKey())
@@ -121,6 +122,7 @@ public class Mapper {
         dto.setOutroSubHeader(entity.getOutroSubHeader());
         dto.setIsbarGraphJsonMultiMediaKeyUploaded(entity.getIsbarGraphJsonMultiMediaKeyUploaded());
         dto.setBarGraphJsonMultiMediaKey(entity.getBarGraphJsonMultiMediaKey());
+        dto.setBarGraphRaceFooter(entity.getBarGraphRaceFooter());
         dto.setIntroAudioString(introAudioString);
         dto.setIsIntroAudioStringPresent(entity.getIsIntroAudioStringPresent());
         dto.setIsIntroAudioStringUploaded(entity.getIsIntroAudioStringUploaded());
@@ -657,6 +659,13 @@ public class Mapper {
                 .barHeight(dto.getBarHeight())
                 .topN(dto.getTopN())
                 .xLimitMultiplier(dto.getXLimitMultiplier())
+                .isFooterPresent(dto.getIsFooterPresent())
+                .footerFontType(dto.getFooterFontType())
+                .footerFontName(dto.getFooterFontName())
+                .footerSize(dto.getFooterSize())
+                .footerColor(dto.getFooterColor())
+                .footerBackgroundColor(dto.getFooterBackgroundColor())
+                .lastlyUsed(dto.getLastlyUsed())
                 .lastlyUsed(dto.getLastlyUsed())
                 .build();
     }
@@ -681,6 +690,12 @@ public class Mapper {
         dto.setBarHeight(entity.getBarHeight());
         dto.setTopN(entity.getTopN());
         dto.setXLimitMultiplier(entity.getXLimitMultiplier());
+        dto.setIsFooterPresent(entity.getIsFooterPresent());
+        dto.setFooterFontType(entity.getFooterFontType());
+        dto.setFooterFontName(entity.getFooterFontName());
+        dto.setFooterSize(entity.getFooterSize());
+        dto.setFooterColor(entity.getFooterColor());
+        dto.setFooterBackgroundColor(entity.getFooterBackgroundColor());
         dto.setLastlyUsed(entity.getLastlyUsed());
 
         return dto;

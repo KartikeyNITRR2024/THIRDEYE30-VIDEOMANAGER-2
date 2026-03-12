@@ -70,6 +70,24 @@ public class StockRace {
     @Column(name = "x_limit_multiplier")
     private Double xLimitMultiplier;
     
+    @Column(name = "is_footer")
+    private Boolean isFooterPresent;
+
+    @Column(name = "footer_font_type")
+    private String footerFontType;
+
+    @Column(name = "footer_font_name")
+    private String footerFontName;
+
+    @Column(name = "footer_size")
+    private Integer footerSize;
+
+    @Column(name = "footer_color")
+    private String footerColor;
+    
+    @Column(name = "footer_background_color")
+    private String footerBackgroundColor;
+    
     @Column(name = "lastly_used") 
     private LocalDateTime lastlyUsed;
 }

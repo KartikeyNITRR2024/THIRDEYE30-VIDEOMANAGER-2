@@ -44,6 +44,9 @@ public class VideoDetails {
     @Column(name = "bar_graph_json_multimedia_key")
     private UUID barGraphJsonMultiMediaKey;
     
+    @Column(name = "bar_graph_race_footer")
+    private String barGraphRaceFooter;
+    
     @Column(name = "is_intro_audio_string_present", nullable = false)
     private Boolean isIntroAudioStringPresent;
     

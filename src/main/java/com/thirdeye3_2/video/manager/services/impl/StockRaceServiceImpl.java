@@ -39,12 +39,34 @@ public class StockRaceServiceImpl implements StockRaceService {
     @Override
     public StockRaceDto update(UUID id, StockRaceDto dto) {
         log.info("Updating StockRace id={}", id);
-
         StockRace existing = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("StockRace not found"));
 
-        dto.setId(existing.getId());
-        return Mapper.toDto(repository.save(Mapper.toEntity(dto)));
+        existing.setName(dto.getName());
+        existing.setDescription(dto.getDescription());
+        existing.setActive(dto.getActive());
+        existing.setAccentColor(dto.getAccentColor());
+        existing.setTextColor(dto.getTextColor());
+        existing.setBgBadgeColor(dto.getBgBadgeColor());
+        existing.setBarAlpha(dto.getBarAlpha());
+        existing.setGlowSize(dto.getGlowSize());
+        existing.setBarColors(dto.getBarColors());
+        existing.setBaseFontSize(dto.getBaseFontSize());
+        existing.setLabelFontSize(dto.getLabelFontSize());
+        existing.setValueFontSize(dto.getValueFontSize());
+        existing.setClockFontSize(dto.getClockFontSize());
+        existing.setBarHeight(dto.getBarHeight());
+        existing.setTopN(dto.getTopN());
+        existing.setXLimitMultiplier(dto.getXLimitMultiplier());
+        existing.setIsFooterPresent(dto.getIsFooterPresent());
+        existing.setFooterFontType(dto.getFooterFontType());
+        existing.setFooterFontName(dto.getFooterFontName());
+        existing.setFooterSize(dto.getFooterSize());
+        existing.setFooterColor(dto.getFooterColor());
+        existing.setFooterBackgroundColor(dto.getFooterBackgroundColor());
+        existing.setLastlyUsed(LocalDateTime.now());
+        StockRace updatedEntity = repository.save(existing);
+        return Mapper.toDto(updatedEntity);
     }
 
     @Override

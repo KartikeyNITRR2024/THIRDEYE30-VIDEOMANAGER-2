@@ -15,6 +15,7 @@ public class VideoDetailsDto {
     private String outroSubHeader;
     private Boolean isbarGraphJsonMultiMediaKeyUploaded;
     private UUID barGraphJsonMultiMediaKey;
+    private String barGraphRaceFooter;
     private String introAudioString;
     private Boolean isIntroAudioStringPresent;
     private Boolean isIntroAudioStringUploaded;

@@ -132,6 +132,9 @@ public class VideoDetailsServiceImpl implements VideoDetailsService {
         entity.setIntroHeader(dto.getIntroHeader());
         entity.setIntroSubHeader(dto.getIntroSubHeader());
         entity.setHeader(dto.getHeader());
+        entity.setIsbarGraphJsonMultiMediaKeyUploaded(dto.getIsbarGraphJsonMultiMediaKeyUploaded());
+        entity.setBarGraphJsonMultiMediaKey(dto.getBarGraphJsonMultiMediaKey());
+        entity.setBarGraphRaceFooter(dto.getBarGraphRaceFooter());
         entity.setOutroHeader(dto.getOutroHeader());
         entity.setOutroSubHeader(dto.getOutroSubHeader());
         entity.setIsIntroAudioStringPresent(dto.getIsIntroAudioStringPresent());

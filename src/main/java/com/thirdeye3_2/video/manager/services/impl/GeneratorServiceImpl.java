@@ -316,7 +316,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 				 videoGenerateFetcherResponseDto.getStockRaceDto().setLabelFontSize(stockRaceDto.getLabelFontSize());
 				 videoGenerateFetcherResponseDto.getStockRaceDto().setValueFontSize(stockRaceDto.getValueFontSize());
 				 videoGenerateFetcherResponseDto.getStockRaceDto().setClockFontSize(stockRaceDto.getClockFontSize());
-			 }
+				 videoGenerateFetcherResponseDto.getStockRaceDto().setFooterSize(stockRaceDto.getFooterSize());			 }
 		 }
 		 videoGenerateFetcherResponseDto.setTelegramSettingDto(getTelegramSetting());
 		 videoGenerateFetcherResponseDto.setCurrentTime(LocalDateTime.now());
