@@ -39,7 +39,7 @@ public class Video {
     private Interval interval;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type_of_video", nullable = false)
+    @Column(name = "type_of_video")
     private VideoType typeOfVideo;
 
     @Column(name = "stock_group")

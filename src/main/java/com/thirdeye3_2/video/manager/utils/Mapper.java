@@ -100,6 +100,7 @@ public class Mapper {
                 .outroSubHeader(dto.getOutroSubHeader())
                 .isbarGraphJsonMultiMediaKeyUploaded(dto.getIsbarGraphJsonMultiMediaKeyUploaded())
                 .barGraphJsonMultiMediaKey(dto.getBarGraphJsonMultiMediaKey())
+                .isBarGraphFooterPresent(dto.getIsBarGraphFooterPresent())
                 .barGraphRaceFooter(dto.getBarGraphRaceFooter())
                 .isIntroAudioStringPresent(dto.getIsIntroAudioStringPresent())
                 .isIntroAudioStringUploaded(dto.getIsIntroAudioStringUploaded() != null ? dto.getIsIntroAudioStringUploaded() : false)
@@ -122,6 +123,7 @@ public class Mapper {
         dto.setOutroSubHeader(entity.getOutroSubHeader());
         dto.setIsbarGraphJsonMultiMediaKeyUploaded(entity.getIsbarGraphJsonMultiMediaKeyUploaded());
         dto.setBarGraphJsonMultiMediaKey(entity.getBarGraphJsonMultiMediaKey());
+        dto.setIsBarGraphFooterPresent(entity.getIsBarGraphFooterPresent());
         dto.setBarGraphRaceFooter(entity.getBarGraphRaceFooter());
         dto.setIntroAudioString(introAudioString);
         dto.setIsIntroAudioStringPresent(entity.getIsIntroAudioStringPresent());

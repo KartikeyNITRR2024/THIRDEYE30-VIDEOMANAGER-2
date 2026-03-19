@@ -44,6 +44,9 @@ public class VideoDetails {
     @Column(name = "bar_graph_json_multimedia_key")
     private UUID barGraphJsonMultiMediaKey;
     
+    @Column(name = "is_bar_graph_footer_present", nullable = false)
+    private Boolean isBarGraphFooterPresent = false;
+    
     @Column(name = "bar_graph_race_footer")
     private String barGraphRaceFooter;
     
