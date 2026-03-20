@@ -43,6 +43,7 @@ public class VideoDetailsServiceImpl implements VideoDetailsService {
         log.info("Creating VideoDetails for videoId={}", dto.getVideoId());
         VideoDetails videoDetails = Mapper.toEntity(dto);
         videoDetails.setCreatedTime(LocalDateTime.now());
+        videoDetails.setIsBarGraphFooterPresent(false);
         VideoDetails saved =
                 repository.save(videoDetails);
 
@@ -144,6 +145,7 @@ public class VideoDetailsServiceImpl implements VideoDetailsService {
         entity.setIsOutroAudioStringPresent(dto.getIsOutroAudioStringPresent());
         entity.setIsOutroAudioStringUploaded(dto.getIsOutroAudioStringUploaded());
         entity.setOutroAudioMultiMediaKey(dto.getOutroAudioMultiMediaKey());
+        entity.setIsBarGraphFooterPresent(false);
 
         VideoDetails updated = repository.save(entity);
 
@@ -235,7 +237,6 @@ public class VideoDetailsServiceImpl implements VideoDetailsService {
             return;
         }
         
-        System.out.println(tableName);
         for (VideoDetails videoDetails : list) {
         	if(tableName.equals(TableName.VIDEODETAILS_BARGAPH))
         	{
