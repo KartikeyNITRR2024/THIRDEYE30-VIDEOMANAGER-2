@@ -183,6 +183,7 @@ public class Mapper {
                 .videoDetailsId(dto.getVideoDetailsId())
                 .header(dto.getHeader())
                 .content(dto.getContent())
+                .companyName(dto.getCompanyName())
                 .newsWarningColor(dto.getNewsWarningColor())
                 .createdTime(dto.getCreatedTime())
                 .isImageMultiMediaKeyUploaded(dto.getIsImageMultiMediaKeyUploaded())
@@ -199,6 +200,7 @@ public class Mapper {
                 .videoDetailsId(entity.getVideoDetailsId())
                 .header(entity.getHeader())
                 .content(entity.getContent())
+                .companyName(entity.getCompanyName())
                 .audioContent(audioContent)
                 .newsWarningColor(entity.getNewsWarningColor())
                 .createdTime(entity.getCreatedTime())
@@ -336,6 +338,10 @@ public class Mapper {
                 .audioMultiMediaKey(dto.getAudioMultiMediaKey())
                 .audioVolumne(dto.getAudioVolumne())
                 .isAudio(dto.getIsAudio())
+                .iscompanyNamePresent(dto.getIscompanyNamePresent())
+                .companyNamefontColor(dto.getCompanyNamefontColor())
+                .companyNamefontName(dto.getCompanyNamefontName())
+                .companyNamefontSize(dto.getCompanyNamefontSize())
                 .lastlyUsed(dto.getLastlyUsed())
                 .build();
     }
@@ -367,6 +373,10 @@ public class Mapper {
         dto.setAdImageWidth(entity.getAdImageWidth());
         dto.setIsAudio(entity.getIsAudio());
         dto.setAudioMultiMediaKey(entity.getAudioMultiMediaKey());
+        dto.setIscompanyNamePresent(entity.getIscompanyNamePresent());
+        dto.setCompanyNamefontColor(entity.getCompanyNamefontColor());
+        dto.setCompanyNamefontName(entity.getCompanyNamefontName());
+        dto.setCompanyNamefontSize(entity.getCompanyNamefontSize());
         dto.setAudioVolumne(entity.getAudioVolumne());
         dto.setLastlyUsed(entity.getLastlyUsed());
         return dto;

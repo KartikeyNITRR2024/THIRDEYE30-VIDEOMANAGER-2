@@ -44,8 +44,19 @@ public class NewsImageServiceImpl implements NewsImageService {
         NewsImage existing = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("NewsImage not found"));
 
-        dto.setId(existing.getId());
-        return Mapper.toDto(repository.save(Mapper.toEntity(dto)));
+        existing.setName(dto.getName());
+        existing.setDescription(dto.getDescription());
+        existing.setActive(dto.getActive());
+        existing.setEnterFrom(dto.getEnterFrom());
+        existing.setExitTo(dto.getExitTo());
+        existing.setTransitionT(dto.getTransitionT());
+        existing.setMarginScale(dto.getMarginScale());
+        existing.setAnimationMode(dto.getAnimationMode());
+        existing.setZoomIntensity(dto.getZoomIntensity());
+        existing.setIsSpinEnabled(dto.getIsSpinEnabled());
+        existing.setSpinSpeed(dto.getSpinSpeed());
+
+        return Mapper.toDto(repository.save(existing));
     }
 
     @Override

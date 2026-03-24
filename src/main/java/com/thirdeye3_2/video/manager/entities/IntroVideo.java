@@ -101,6 +101,18 @@ public class IntroVideo {
     @Column(name = "audio_volumne")
     private Integer audioVolumne;
     
+    @Column(name = "is_companyname_present")
+    private Boolean iscompanyNamePresent;
+    
+    @Column(name = "companyname_font_size")
+    private Integer companyNamefontSize;
+    
+    @Column(name = "companyname_font_color")
+    private String companyNamefontColor;
+    
+    @Column(name = "companyname_font_name")
+    private String companyNamefontName;
+    
     @Column(name = "lastly_used") 
     private LocalDateTime lastlyUsed;
 

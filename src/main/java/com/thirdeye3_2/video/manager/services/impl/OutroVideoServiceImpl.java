@@ -42,8 +42,32 @@ public class OutroVideoServiceImpl implements OutroVideoService {
         OutroVideo existing = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("OutroVideo not found"));
 
-        dto.setId(existing.getId());
-        return Mapper.toDto(repository.save(Mapper.toEntity(dto)));
+        existing.setName(dto.getName());
+        existing.setDescription(dto.getDescription());
+        existing.setActive(dto.getActive());
+
+        existing.setIsBackgroundImage(dto.getIsBackgroundImage());
+        existing.setBackgroundImage(dto.getBackgroundImage());
+        existing.setBackgroundColor(dto.getBackgroundColor());
+        existing.setBackgroundOpacity(dto.getBackgroundOpacity());
+
+        existing.setIsHeaderPresent(dto.getIsHeaderPresent());
+        existing.setHeaderFontType(dto.getHeaderFontType());
+        existing.setHeaderFontName(dto.getHeaderFontName());
+        existing.setHeaderSize(dto.getHeaderSize());
+        existing.setHeaderColor(dto.getHeaderColor());
+
+        existing.setIsSubHeaderPresent(dto.getIsSubHeaderPresent());
+        existing.setSubHeaderFontType(dto.getSubHeaderFontType());
+        existing.setSubHeaderFontName(dto.getSubHeaderFontName());
+        existing.setSubHeaderSize(dto.getSubHeaderSize());
+        existing.setSubHeaderColor(dto.getSubHeaderColor());
+
+        existing.setIsAudio(dto.getIsAudio());
+        existing.setAudioMultiMediaKey(dto.getAudioMultiMediaKey());
+        existing.setAudioVolumne(dto.getAudioVolumne());
+
+        return Mapper.toDto(repository.save(existing));
     }
 
     @Override

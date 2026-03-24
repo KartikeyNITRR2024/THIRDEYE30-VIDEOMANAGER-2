@@ -43,8 +43,34 @@ public class ContentVideoServiceImpl implements ContentVideoService {
         ContentVideo existing = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("ContentVideo not found"));
 
-        dto.setId(existing.getId());
-        return Mapper.toDto(repository.save(Mapper.toEntity(dto)));
+        existing.setName(dto.getName());
+        existing.setDescription(dto.getDescription());
+        existing.setActive(dto.getActive());
+        existing.setIsBackgroundImage(dto.getIsBackgroundImage());
+        existing.setBackgroundImage(dto.getBackgroundImage());
+        existing.setBackgroundColor(dto.getBackgroundColor());
+        existing.setBackgroundOpacity(dto.getBackgroundOpacity());
+        existing.setIsHeaderPresent(dto.getIsHeaderPresent());
+        existing.setHeaderType(dto.getHeaderType());
+        existing.setHeaderHeightInPercent(dto.getHeaderHeightInPercent());
+        existing.setHeaderStartingPosition(dto.getHeaderStartingPosition());
+        existing.setIsBarRace(dto.getIsBarRace());
+        existing.setBarRaceType(dto.getBarRaceType());
+        existing.setBarRaceHeightInPercent(dto.getBarRaceHeightInPercent());
+        existing.setBarRaceStartingPosition(dto.getBarRaceStartingPosition());
+        existing.setIsNewsImage(dto.getIsNewsImage());
+        existing.setNewsImageType(dto.getNewsImageType());
+        existing.setNewsImageHeightInPercent(dto.getNewsImageHeightInPercent());
+        existing.setNewsImageStartingPosition(dto.getNewsImageStartingPosition());
+        existing.setIsNewsText(dto.getIsNewsText());
+        existing.setNewsTextType(dto.getNewsTextType());
+        existing.setNewsTexteHeightInPercent(dto.getNewsTexteHeightInPercent());
+        existing.setNewsTextStartingPosition(dto.getNewsTextStartingPosition());
+        existing.setIsAudio(dto.getIsAudio());
+        existing.setAudioMultiMediaKey(dto.getAudioMultiMediaKey());
+        existing.setAudioVolumne(dto.getAudioVolumne());
+        ContentVideo updatedEntity = repository.save(existing);
+        return Mapper.toDto(updatedEntity);
     }
 
     @Override

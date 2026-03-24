@@ -33,5 +33,9 @@ public class IntroVideoDto {
     private Boolean isAudio;
     private UUID audioMultiMediaKey;
     private Integer audioVolumne;
+    private Boolean iscompanyNamePresent;
+    private Integer companyNamefontSize;
+    private String companyNamefontColor;
+    private String companyNamefontName;
     private LocalDateTime lastlyUsed;
 }

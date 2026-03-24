@@ -33,6 +33,9 @@ public class News {
 
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
+    
+    @Column(name = "company_name", columnDefinition = "TEXT")
+    private String companyName;
 
     @Column(name = "news_warning_color")
     private String newsWarningColor;

@@ -44,8 +44,24 @@ public class HeaderServiceImpl implements HeaderService {
         Header existing = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Header not found"));
 
-        dto.setId(existing.getId());
-        return Mapper.toDto(repository.save(Mapper.toEntity(dto)));
+        existing.setName(dto.getName());
+        existing.setDescription(dto.getDescription());
+        existing.setActive(dto.getActive());
+        existing.setBackgroundColor(dto.getBackgroundColor());
+        existing.setAccentColor(dto.getAccentColor());
+        existing.setBadgeColor(dto.getBadgeColor());
+        existing.setTextColor(dto.getTextColor());
+        existing.setIsBadgePresent(dto.getIsBadgePresent());
+        existing.setBadgeWidthPct(dto.getBadgeWidthPct());
+        existing.setBadgePosition(dto.getBadgePosition());
+        existing.setAccentHeightPct(dto.getAccentHeightPct());
+        existing.setTextSize(dto.getTextSize());
+        existing.setLogoSize(dto.getLogoSize());
+        existing.setAnimCycle(dto.getAnimCycle());
+        existing.setAnimEase(dto.getAnimEase());
+        existing.setAnimBuffer(dto.getAnimBuffer());
+
+        return Mapper.toDto(repository.save(existing));
     }
 
     @Override

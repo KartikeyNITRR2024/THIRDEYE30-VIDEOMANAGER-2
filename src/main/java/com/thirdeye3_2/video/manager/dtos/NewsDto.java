@@ -13,6 +13,8 @@ public class NewsDto {
     private UUID videoDetailsId;
     private String header;
     private String content;
+    private String companyName;
+    
     private String audioContent;
     private String newsWarningColor;
     private LocalDateTime createdTime;

@@ -92,6 +92,7 @@ public class NewsServiceImpl implements NewsService {
 
         entity.setHeader(dto.getHeader());
         entity.setContent(dto.getContent());
+        entity.setCompanyName(dto.getCompanyName());
         entity.setNewsWarningColor(dto.getNewsWarningColor());
         entity.setIsImageMultiMediaKeyUploaded(dto.getIsImageMultiMediaKeyUploaded());
         entity.setImageMultiMediaKey(dto.getImageMultiMediaKey());

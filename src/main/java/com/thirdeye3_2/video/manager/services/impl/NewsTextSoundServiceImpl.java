@@ -45,8 +45,37 @@ public class NewsTextSoundServiceImpl implements NewsTextSoundService {
         NewsTextSound existing = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("NewsTextSound not found"));
 
-        dto.setId(existing.getId());
-        return Mapper.toDto(repository.save(Mapper.toEntity(dto)));
+        existing.setName(dto.getName());
+        existing.setDescription(dto.getDescription());
+        existing.setActive(dto.getActive());
+        
+        existing.setBgTheme(dto.getBgTheme());
+        existing.setAccentColor(dto.getAccentColor());
+        existing.setTextColor(dto.getTextColor());
+        
+        existing.setBoxAlpha(dto.getBoxAlpha());
+        existing.setBoxPad(dto.getBoxPad());
+        existing.setDpi(dto.getDpi());
+        
+        existing.setTransitionT(dto.getTransitionT());
+        existing.setEnterFrom(dto.getEnterFrom());
+        existing.setExitTo(dto.getExitTo());
+        
+        existing.setFocusY(dto.getFocusY());
+        existing.setGapMain(dto.getGapMain());
+        existing.setGapSub(dto.getGapSub());
+        existing.setSideScale(dto.getSideScale());
+        
+        existing.setHeaderWrap(dto.getHeaderWrap());
+        existing.setContentWrap(dto.getContentWrap());
+        existing.setOtherWrap(dto.getOtherWrap());
+        
+        existing.setBaseFontSize(dto.getBaseFontSize());
+        existing.setIsAudio(dto.getIsAudio());
+        existing.setEndSilenceTimeInSeconds(dto.getEndSilenceTimeInSeconds());
+        existing.setAudioVolumne(dto.getAudioVolumne());
+
+        return Mapper.toDto(repository.save(existing));
     }
 
     @Override

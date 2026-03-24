@@ -42,10 +42,36 @@ public class IntroVideoServiceImpl implements IntroVideoService {
         IntroVideo existing = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("IntroVideo not found"));
 
-        dto.setId(existing.getId());
-        IntroVideo updated = Mapper.toEntity(dto);
-        System.out.println(updated);
-        return Mapper.toDto(repository.save(updated));
+        existing.setName(dto.getName());
+        existing.setDescription(dto.getDescription());
+        existing.setActive(dto.getActive());
+        existing.setIsBackgroundImage(dto.getIsBackgroundImage());
+        existing.setBackgroundImage(dto.getBackgroundImage());
+        existing.setBackgroundColor(dto.getBackgroundColor());
+        existing.setBackgroundOpacity(dto.getBackgroundOpacity());
+        existing.setIsHeaderPresent(dto.getIsHeaderPresent());
+        existing.setHeaderFontType(dto.getHeaderFontType());
+        existing.setHeaderFontName(dto.getHeaderFontName());
+        existing.setHeaderSize(dto.getHeaderSize());
+        existing.setHeaderColor(dto.getHeaderColor());
+        existing.setIsSubHeaderPresent(dto.getIsSubHeaderPresent());
+        existing.setSubHeaderFontType(dto.getSubHeaderFontType());
+        existing.setSubHeaderFontName(dto.getSubHeaderFontName());
+        existing.setSubHeaderSize(dto.getSubHeaderSize());
+        existing.setSubHeaderColor(dto.getSubHeaderColor());
+        existing.setIsLinePresent(dto.getIsLinePresent());
+        existing.setLineColor(dto.getLineColor());
+        existing.setLineWidth(dto.getLineWidth());
+        existing.setAdImageHeight(dto.getAdImageHeight());
+        existing.setAdImageWidth(dto.getAdImageWidth());
+        existing.setIsAudio(dto.getIsAudio());
+        existing.setAudioMultiMediaKey(dto.getAudioMultiMediaKey());
+        existing.setAudioVolumne(dto.getAudioVolumne());
+        existing.setIscompanyNamePresent(dto.getIscompanyNamePresent());
+        existing.setCompanyNamefontSize(dto.getCompanyNamefontSize());
+        existing.setCompanyNamefontColor(dto.getCompanyNamefontColor());
+        existing.setCompanyNamefontName(dto.getCompanyNamefontName());
+        return Mapper.toDto(repository.save(existing));
     }
 
     @Override
