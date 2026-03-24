@@ -2,6 +2,9 @@ package com.thirdeye3_2.video.manager.dtos;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+
+import com.thirdeye3_2.video.manager.enums.Language;
+
 import lombok.Data;
 
 @Data
@@ -25,5 +28,6 @@ public class VideoDetailsDto {
     private Boolean isOutroAudioStringPresent;
     private Boolean isOutroAudioStringUploaded;
     private UUID outroAudioMultiMediaKey;
+    private Language language;
     private LocalDateTime createdTime;
 }

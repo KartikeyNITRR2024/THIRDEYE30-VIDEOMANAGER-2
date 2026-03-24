@@ -108,6 +108,7 @@ public class Mapper {
                 .isOutroAudioStringPresent(dto.getIsOutroAudioStringPresent())
                 .isOutroAudioStringUploaded(dto.getIsOutroAudioStringUploaded() != null ? dto.getIsOutroAudioStringUploaded() : false)
                 .outroAudioMultiMediaKey(dto.getOutroAudioMultiMediaKey())
+                .language(dto.getLanguage())
                 .createdTime(dto.getCreatedTime())
                 .build();
     }
@@ -133,6 +134,7 @@ public class Mapper {
         dto.setIsOutroAudioStringPresent(entity.getIsOutroAudioStringPresent());
         dto.setIsOutroAudioStringUploaded(entity.getIsOutroAudioStringUploaded());
         dto.setOutroAudioMultiMediaKey(entity.getOutroAudioMultiMediaKey());
+        dto.setLanguage(entity.getLanguage());
         dto.setCreatedTime(entity.getCreatedTime());
         return dto;
     }

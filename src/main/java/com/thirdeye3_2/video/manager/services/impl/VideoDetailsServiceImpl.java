@@ -146,6 +146,7 @@ public class VideoDetailsServiceImpl implements VideoDetailsService {
         entity.setIsOutroAudioStringUploaded(dto.getIsOutroAudioStringUploaded());
         entity.setOutroAudioMultiMediaKey(dto.getOutroAudioMultiMediaKey());
         entity.setIsBarGraphFooterPresent(false);
+        entity.setLanguage(dto.getLanguage());
 
         VideoDetails updated = repository.save(entity);
 

@@ -3,6 +3,9 @@ package com.thirdeye3_2.video.manager.entities;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.thirdeye3_2.video.manager.enums.Interval;
+import com.thirdeye3_2.video.manager.enums.Language;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -67,6 +70,10 @@ public class VideoDetails {
     
     @Column(name = "outro_audio_multimedia_key")
     private UUID outroAudioMultiMediaKey;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "language")
+    private Language language;
     
     @Column(name = "created_time", nullable = false)
     private LocalDateTime createdTime;
