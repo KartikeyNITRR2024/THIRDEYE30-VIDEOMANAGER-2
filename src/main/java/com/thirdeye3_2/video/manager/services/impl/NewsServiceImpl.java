@@ -208,7 +208,7 @@ public class NewsServiceImpl implements NewsService {
             while ((line = reader.readLine()) != null) {
                 if (line.trim().isEmpty()) continue;
                 String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-                if (data.length < 5) {
+                if (data.length < 6) {
                     log.warn("Skipping malformed row (insufficient columns): {}", line);
                     continue;
                 }
@@ -216,8 +216,9 @@ public class NewsServiceImpl implements NewsService {
                         .videoDetailsId(csvDto.getVideoDetailsId())
                         .header(clean(data[0]))
                         .content(clean(data[1]))
-                        .audioContent(clean(data[2]))
-                        .newsWarningColor(clean(data[3]))
+                        .companyName(clean(data[2]))
+                        .audioContent(clean(data[3]))
+                        .newsWarningColor(clean(data[4]))
                         .autoDelete(Boolean.TRUE)
                         .isAudioMultiMediaKeyUploaded(Boolean.FALSE)
                         .isImageMultiMediaKeyUploaded(Boolean.FALSE)
