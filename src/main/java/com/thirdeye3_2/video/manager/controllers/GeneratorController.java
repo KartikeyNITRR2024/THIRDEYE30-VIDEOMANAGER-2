@@ -43,7 +43,8 @@ public class GeneratorController {
 	
 	@GetMapping("/video-generater-fetcher")
     public Response<VideoGenerateFetcherResponseDto> videoGeneraterFetcher() {
-		contentGeneratorService.updateStatus(GeneratorType.VIDEO_GENERATOR, true);
+		contentGeneratorService.updateStatus(GeneratorType.VIDEO_GENERATOR_ENGLISH, true);
+		contentGeneratorService.updateStatus(GeneratorType.VIDEO_GENERATOR_HINDI_ENGLISH, true);
         return new Response<>(true, 0, null, generatorService.videoGeneraterFetcher());
     }
 	
