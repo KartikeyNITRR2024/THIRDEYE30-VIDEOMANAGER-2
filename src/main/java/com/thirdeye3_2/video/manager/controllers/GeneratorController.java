@@ -41,10 +41,16 @@ public class GeneratorController {
         return new Response<>(true, 0, null, generatorService.audioGeneraterFetcher());
     }
 	
-	@GetMapping("/video-generater-fetcher")
-    public Response<VideoGenerateFetcherResponseDto> videoGeneraterFetcher() {
-		contentGeneratorService.updateStatus(GeneratorType.VIDEO_GENERATOR_ENGLISH, true);
-		contentGeneratorService.updateStatus(GeneratorType.VIDEO_GENERATOR_HINDI_ENGLISH, true);
+	@GetMapping("/video-generater-fetcher/{type}")
+    public Response<VideoGenerateFetcherResponseDto> videoGeneraterFetcher(@PathVariable GeneratorType type) {
+		if(type.equals(GeneratorType.VIDEO_GENERATOR_ENGLISH))
+		{
+			contentGeneratorService.updateStatus(GeneratorType.VIDEO_GENERATOR_ENGLISH, true);
+		}
+		if(type.equals(GeneratorType.VIDEO_GENERATOR_HINDI_ENGLISH))
+		{
+			contentGeneratorService.updateStatus(GeneratorType.VIDEO_GENERATOR_HINDI_ENGLISH, true);
+		}
         return new Response<>(true, 0, null, generatorService.videoGeneraterFetcher());
     }
 	
